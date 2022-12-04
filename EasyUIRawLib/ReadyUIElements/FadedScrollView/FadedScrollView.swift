@@ -82,7 +82,9 @@ open class FadedScrollView: UIScrollView {
         let layerGradient = CAGradientLayer()
         self.layerGradient = layerGradient
         
-        layerGradient.colors = [cgTransparentColor, cgOpaqueColor, cgOpaqueColor, cgTransparentColor]
+        let firstColor = enableStartFade ? cgTransparentColor : cgOpaqueColor
+        let lastColor = enableEndFade ? cgTransparentColor : cgOpaqueColor
+        layerGradient.colors = [firstColor, cgOpaqueColor, cgOpaqueColor, lastColor]
         
         layerGradient.frame = bounds
         if isVertical {
