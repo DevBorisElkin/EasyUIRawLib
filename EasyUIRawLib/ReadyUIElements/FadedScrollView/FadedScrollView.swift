@@ -19,8 +19,7 @@ class FadedScrollView: UIScrollView {
     private var topFadeView: UIView?
     private var bottomFadeView: UIView?
     
-    private var topGradientMask: CAGradientLayer?
-    private var bottomGradientMask: CAGradientLayer?
+    private var fadeGradientMask: CAGradientLayer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,69 +45,30 @@ class FadedScrollView: UIScrollView {
     
     private func commonInit() {
         print("commonInit()")
-        configureTopFadeView()
-        configureBottomFadeView()
-        
-        
-//        DispatchQueue.main.async {
-//            if self.enableTopFade {
-//                self.topGradientMask = self.addGradientLayer(color1: UIColor.white.withAlphaComponent(0.0), color2: UIColor.white.withAlphaComponent(1.0))
-//                //layer.mask = topGradientMask
-//            }
-            
-//            if self.enableBottomFade {
-//                self.bottomGradientMask = self.addGradientLayer(color1: UIColor.white.withAlphaComponent(1.0), color2: UIColor.white.withAlphaComponent(0.0))
-//                //layer.mask = bottomGradientMask
-//            }
+        configureFadeLayer()
         
     }
     
-    private func configureTopFadeView() {
-        topFadeView = UIView()
-        topFadeView?.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(topFadeView!)
-        topFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
-        topFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        topFadeView!.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        topFadeView!.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        topFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+    private func configureFadeLayer() {
         
-//        DispatchQueue.main.async {
-//            self.topGradientMask = self.topFadeView!.addGradientLayer(color1: UIColor.white.withAlphaComponent(0.0), color2: UIColor.white.withAlphaComponent(1.0))
-//            //self.layer.mask = self.topGradientMask!
-//            self.mask = self.topFadeView!
-//        }
+        let transparentColor = UIColor.white.withAlphaComponent(0).cgColor
+        let opaqueColor = UIColor.white.cgColor
         
-        //layer.mask = topGradientMask
+        let layerGradient = CAGradientLayer()
+        layerGradient.colors = [transparentColor, opaqueColor, opaqueColor, transparentColor]
         
+        layerGradient.frame = bounds
+        layerGradient.startPoint = CGPoint(x: 0, y: 0)
+        layerGradient.endPoint = CGPoint(x: 0, y: 1)
+        
+        layerGradient.locations = [0, 0.1, 0.9, 1.0]
+        
+        layer.addSublayer(layerGradient)
+        layer.mask = layerGradient
     }
     
-    private func configureBottomFadeView() {
-        bottomFadeView = UIView()
-        bottomFadeView?.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(bottomFadeView!)
-        bottomFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
-        bottomFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        bottomFadeView!.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        bottomFadeView!.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        bottomFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
-    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//
-////        topGradientMask?.frame = CGRect(x: 0, y: contentOffset.y, width: bounds.width, height: bounds.height * topFadeSizeMult)
-//        //layoutSubviews()
-////        let bottomLayerHeight: CGFloat = bounds.height * topFadeSizeMult
-//        //bottomGradientMask?.frame = CGRect(x: 0, y: bounds.height - bottomLayerHeight, width: bounds.width, height: bottomLayerHeight)
-//        //super.layoutSubviews()
-//    }
-    
     
 }
-
-//extension FadedScrollView: UIScrollViewDelegate {
-////    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-////        topGradientMask?.frame = CGRect(x: 0, y: contentOffset.y, width: bounds.width, height: bounds.height * topFadeSizeMult)
-////    }
-//}
