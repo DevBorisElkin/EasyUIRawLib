@@ -13,6 +13,12 @@
 		52ED65C2293CF466004E80B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65C0293CF466004E80B7 /* Main.storyboard */; };
 		52ED65C4293CF46A004E80B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65C3293CF46A004E80B7 /* Assets.xcassets */; };
 		52ED65C7293CF46A004E80B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65C5293CF46A004E80B7 /* LaunchScreen.storyboard */; };
+		52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65CF293CF5F0004E80B7 /* RoutingButton.swift */; };
+		52ED65D4293CF838004E80B7 /* Example_1_UITextViewScrollableFaded.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65D3293CF838004E80B7 /* Example_1_UITextViewScrollableFaded.storyboard */; };
+		52ED65D6293CF841004E80B7 /* Example_1_UITextViewScrollableFaded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65D5293CF841004E80B7 /* Example_1_UITextViewScrollableFaded.swift */; };
+		52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65D7293CF8F5004E80B7 /* Extensions.swift */; };
+		52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65DB293CFA95004E80B7 /* FadedScrollView.swift */; };
+		52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65DE293CFC81004E80B7 /* ReadyElementsExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +30,12 @@
 		52ED65C3293CF46A004E80B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52ED65C6293CF46A004E80B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52ED65C8293CF46A004E80B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52ED65CF293CF5F0004E80B7 /* RoutingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingButton.swift; sourceTree = "<group>"; };
+		52ED65D3293CF838004E80B7 /* Example_1_UITextViewScrollableFaded.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_1_UITextViewScrollableFaded.storyboard; sourceTree = "<group>"; };
+		52ED65D5293CF841004E80B7 /* Example_1_UITextViewScrollableFaded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_1_UITextViewScrollableFaded.swift; sourceTree = "<group>"; };
+		52ED65D7293CF8F5004E80B7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		52ED65DB293CFA95004E80B7 /* FadedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedScrollView.swift; sourceTree = "<group>"; };
+		52ED65DE293CFC81004E80B7 /* ReadyElementsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyElementsExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,10 @@
 		52ED65B9293CF466004E80B7 /* EasyUIRawLib */ = {
 			isa = PBXGroup;
 			children = (
+				52ED65CE293CF5E2004E80B7 /* PresentationHelpers */,
+				52ED65D1293CF7B8004E80B7 /* PresentationScreens */,
+				52ED65DD293CFC5D004E80B7 /* ReadyElementsHelpers */,
+				52ED65D9293CFA32004E80B7 /* ReadyUIElements */,
 				52ED65BA293CF466004E80B7 /* AppDelegate.swift */,
 				52ED65BC293CF466004E80B7 /* SceneDelegate.swift */,
 				52ED65BE293CF466004E80B7 /* ViewController.swift */,
@@ -65,6 +81,56 @@
 				52ED65C8293CF46A004E80B7 /* Info.plist */,
 			);
 			path = EasyUIRawLib;
+			sourceTree = "<group>";
+		};
+		52ED65CE293CF5E2004E80B7 /* PresentationHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65CF293CF5F0004E80B7 /* RoutingButton.swift */,
+				52ED65D7293CF8F5004E80B7 /* Extensions.swift */,
+			);
+			path = PresentationHelpers;
+			sourceTree = "<group>";
+		};
+		52ED65D1293CF7B8004E80B7 /* PresentationScreens */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65D2293CF7CE004E80B7 /* Example_1_UITextViewScrollableFaded */,
+			);
+			path = PresentationScreens;
+			sourceTree = "<group>";
+		};
+		52ED65D2293CF7CE004E80B7 /* Example_1_UITextViewScrollableFaded */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65D3293CF838004E80B7 /* Example_1_UITextViewScrollableFaded.storyboard */,
+				52ED65D5293CF841004E80B7 /* Example_1_UITextViewScrollableFaded.swift */,
+			);
+			path = Example_1_UITextViewScrollableFaded;
+			sourceTree = "<group>";
+		};
+		52ED65D9293CFA32004E80B7 /* ReadyUIElements */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65DA293CFA55004E80B7 /* FadedScrollView */,
+			);
+			path = ReadyUIElements;
+			sourceTree = "<group>";
+		};
+		52ED65DA293CFA55004E80B7 /* FadedScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65DB293CFA95004E80B7 /* FadedScrollView.swift */,
+			);
+			path = FadedScrollView;
+			sourceTree = "<group>";
+		};
+		52ED65DD293CFC5D004E80B7 /* ReadyElementsHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				52ED65DE293CFC81004E80B7 /* ReadyElementsExtensions.swift */,
+			);
+			path = ReadyElementsHelpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52ED65C7293CF46A004E80B7 /* LaunchScreen.storyboard in Resources */,
+				52ED65D4293CF838004E80B7 /* Example_1_UITextViewScrollableFaded.storyboard in Resources */,
 				52ED65C4293CF46A004E80B7 /* Assets.xcassets in Resources */,
 				52ED65C2293CF466004E80B7 /* Main.storyboard in Resources */,
 			);
@@ -139,7 +206,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */,
+				52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */,
+				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
+				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
+				52ED65D6293CF841004E80B7 /* Example_1_UITextViewScrollableFaded.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
+				52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */,
 				52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
