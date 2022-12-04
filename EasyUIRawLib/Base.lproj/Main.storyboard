@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -10,12 +11,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="EasyUIRawLib" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju7-dL-EYY" customClass="FadedScrollView" customModule="EasyUIRawLib" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZyW-ka-4lt">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="988"/>
@@ -25,8 +26,8 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="1_Scrollable &amp; Faded UITextView"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="storyboard" value="Example_1_UITextViewScrollableFaded"/>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_1_UITextViewScrollableFaded"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="storyboard" value="Example_1_UIScrollViewFaded"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_1_UIScrollViewFaded"/>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjt-Mt-STY">
@@ -217,12 +218,9 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="tDv-Gq-IdS"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="0xk-91-rhT"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableTopFade" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="enableBottomFade" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </scrollView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="TKy-h5-R9C"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="topMargin" secondItem="ju7-dL-EYY" secondAttribute="top" id="DSm-RX-PZA"/>
@@ -232,6 +230,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="ju7-dL-EYY" secondAttribute="bottom" id="wiU-Yz-0wK"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="EasyUI elements presentation" id="Aji-uC-8HX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Example1UI Text View Scrollable Faded-->
+        <!--Example1UI Scroll View Faded-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="Example_1_UITextViewScrollableFaded" id="Y6W-OH-hqX" customClass="Example_1_UITextViewScrollableFaded" customModule="EasyUIRawLib" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Example_1_UIScrollViewFaded" id="Y6W-OH-hqX" customClass="Example_1_UIScrollViewFaded" customModule="EasyUIRawLib" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
