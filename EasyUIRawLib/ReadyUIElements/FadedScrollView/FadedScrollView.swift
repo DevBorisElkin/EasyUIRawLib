@@ -17,6 +17,7 @@ class FadedScrollView: UIScrollView {
     // internal items
     
     private var topFadeView: UIView?
+    private var bottomFadeView: UIView?
     
     private var topGradientMask: CAGradientLayer?
     private var bottomGradientMask: CAGradientLayer?
@@ -45,17 +46,9 @@ class FadedScrollView: UIScrollView {
     
     private func commonInit() {
         print("commonInit()")
+        configureTopFadeView()
+        configureBottomFadeView()
         
-        topFadeView = UIView()
-        topFadeView?.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(topFadeView!)
-        topFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
-        topFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        
-        topFadeView!.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 0).isActive = true
-        topFadeView!.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor).isActive = true
-//        topFadeView!.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-        topFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         
 //        DispatchQueue.main.async {
 //            if self.enableTopFade {
@@ -68,6 +61,37 @@ class FadedScrollView: UIScrollView {
 //                //layer.mask = bottomGradientMask
 //            }
         
+    }
+    
+    private func configureTopFadeView() {
+        topFadeView = UIView()
+        topFadeView?.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(topFadeView!)
+        topFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
+        topFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        topFadeView!.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        topFadeView!.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        topFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
+        
+//        DispatchQueue.main.async {
+//            self.topGradientMask = self.topFadeView!.addGradientLayer(color1: UIColor.white.withAlphaComponent(0.0), color2: UIColor.white.withAlphaComponent(1.0))
+//            //self.layer.mask = self.topGradientMask!
+//            self.mask = self.topFadeView!
+//        }
+        
+        //layer.mask = topGradientMask
+        
+    }
+    
+    private func configureBottomFadeView() {
+        bottomFadeView = UIView()
+        bottomFadeView?.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(bottomFadeView!)
+        bottomFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
+        bottomFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
+        bottomFadeView!.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        bottomFadeView!.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        bottomFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
     }
     
 //    override func layoutSubviews() {
