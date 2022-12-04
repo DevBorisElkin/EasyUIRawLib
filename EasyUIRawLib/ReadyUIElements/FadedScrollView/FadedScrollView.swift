@@ -51,8 +51,10 @@ class FadedScrollView: UIScrollView {
         addSubview(topFadeView!)
         topFadeView!.heightAnchor.constraint(equalTo: heightAnchor, multiplier: topFadeSizeMult).isActive = true
         topFadeView!.widthAnchor.constraint(equalTo: widthAnchor).isActive = true
-        topFadeView!.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
-        topFadeView!.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+        
+        topFadeView!.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 0).isActive = true
+        topFadeView!.centerXAnchor.constraint(equalTo: layoutMarginsGuide.centerXAnchor).isActive = true
+//        topFadeView!.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         topFadeView?.backgroundColor = UIColor.red.withAlphaComponent(0.5)
         
 //        DispatchQueue.main.async {
