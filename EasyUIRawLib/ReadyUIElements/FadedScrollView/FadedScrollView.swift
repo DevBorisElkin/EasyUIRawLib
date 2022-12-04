@@ -16,10 +16,7 @@ class FadedScrollView: UIScrollView {
     
     // internal items
     
-    private var topFadeView: UIView?
-    private var bottomFadeView: UIView?
-    
-    private var fadeGradientMask: CAGradientLayer?
+    var layerGradient: CAGradientLayer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,6 +42,7 @@ class FadedScrollView: UIScrollView {
     
     private func commonInit() {
         print("commonInit()")
+        delegate = self
         configureFadeLayer()
         
     }
@@ -55,6 +53,8 @@ class FadedScrollView: UIScrollView {
         let opaqueColor = UIColor.white.cgColor
         
         let layerGradient = CAGradientLayer()
+        self.layerGradient = layerGradient
+        
         layerGradient.colors = [transparentColor, opaqueColor, opaqueColor, transparentColor]
         
         layerGradient.frame = bounds
@@ -71,4 +71,35 @@ class FadedScrollView: UIScrollView {
         super.layoutSubviews()
     }
     
+}
+
+extension FadedScrollView: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+//        var contentOffset = scrollView.contentOffset
+//        contentOffset.y = -contentOffset.y
+        layerGradient?.position = scrollView.contentOffset
+        print("contentOffset: \(contentOffset)")
+        CATransaction.commit()
+        
+        
+    }
+    
+//    @objc private func didScroll(_ scrollView: UIScrollView) {
+//        [CATransaction begin];
+//        [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+//        CGPoint contentOffset = scrollView.contentOffset;
+//        contentOffset.y = -contentOffset.y;
+//
+//        self.overlayImageView.viewlayer.mask.position = contentOffset;
+//        [CATransaction commit];
+//
+////        [CATransaction begin];
+////        [CATransaction setValue:(id)kCFBooleanTrue
+////                         forKey:kCATransactionDisableActions];
+////        layer.content = someImageRef;
+////        [CATransaction commit];
+//    }
 }
