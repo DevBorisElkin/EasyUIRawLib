@@ -23,17 +23,14 @@ class FadedScrollView: UIScrollView {
         commonInit()
     }
     
-//    override var contentOffset: CGPoint {
-//        didSet {
-////            if subviews.count > 0 {
-////                let a = subviews[0]
-////                print("\(self.frame.origin)")
-////            }
-//
-//            print("contentOffset.y: \(contentOffset.y)")
-////            topGradientMask?.frame = CGRect(x: 0, y: contentOffset.y, width: bounds.width, height: bounds.height * topFadeSizeMult)
-//        }
-//    }
+    override var contentOffset: CGPoint {
+        didSet {
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            layerGradient?.frame = safeAreaLayoutGuide.layoutFrame
+            CATransaction.commit()
+        }
+    }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -41,10 +38,7 @@ class FadedScrollView: UIScrollView {
     }
     
     private func commonInit() {
-        print("commonInit()")
-        delegate = self
         configureFadeLayer()
-        
     }
     
     private func configureFadeLayer() {
@@ -71,35 +65,4 @@ class FadedScrollView: UIScrollView {
         super.layoutSubviews()
     }
     
-}
-
-extension FadedScrollView: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        CATransaction.begin()
-        CATransaction.setDisableActions(true)
-//        var contentOffset = scrollView.contentOffset
-//        contentOffset.y = -contentOffset.y
-        layerGradient?.position = scrollView.contentOffset
-        print("contentOffset: \(contentOffset)")
-        CATransaction.commit()
-        
-        
-    }
-    
-//    @objc private func didScroll(_ scrollView: UIScrollView) {
-//        [CATransaction begin];
-//        [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-//        CGPoint contentOffset = scrollView.contentOffset;
-//        contentOffset.y = -contentOffset.y;
-//
-//        self.overlayImageView.viewlayer.mask.position = contentOffset;
-//        [CATransaction commit];
-//
-////        [CATransaction begin];
-////        [CATransaction setValue:(id)kCFBooleanTrue
-////                         forKey:kCATransactionDisableActions];
-////        layer.content = someImageRef;
-////        [CATransaction commit];
-//    }
 }
