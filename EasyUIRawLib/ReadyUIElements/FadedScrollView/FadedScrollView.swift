@@ -21,6 +21,12 @@ open class FadedScrollView: UIScrollView {
     @IBInspectable var endFadeSize: Int = 10 {
         didSet { endFadeSizeMult = CGFloat(endFadeSize) / 100 }
     }
+    @IBInspectable var startProgressToFullFade: Int = 15 {
+        didSet { startProgressToFullFadeMult = CGFloat(startProgressToFullFade) / 100 }
+    }
+    @IBInspectable var endProgressToFullFade: Int = 15 {
+        didSet { endProgressToFullFadeMult = CGFloat(endProgressToFullFade) / 100 }
+    }
     
     @IBInspectable var logarithmicBase: Double = 10
     @IBInspectable var linearInterpolation: Bool = true
@@ -33,6 +39,8 @@ open class FadedScrollView: UIScrollView {
     
     var startFadeSizeMult: CGFloat = 0.1
     var endFadeSizeMult: CGFloat = 0.1
+    var startProgressToFullFadeMult: CGFloat = 0.15
+    var endProgressToFullFadeMult: CGFloat = 0.15
     
     @IBInspectable var debugModeEnabled: Bool = false
     
@@ -84,6 +92,9 @@ open class FadedScrollView: UIScrollView {
         
         progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startFadeSizeMult, endFadeSizeMult: endFadeSizeMult)
+        /*
+         progressManager.configure(parentScrollView: self, startFadeSizeMult: startProgressToFullFadeMult, endFadeSizeMult: endProgressToFullFadeMult)
+         */
         configureFadeLayer()
         configureFadeInterpolation(injectedFromCode: nil)
     }
