@@ -134,6 +134,36 @@ extension UIView {
         leadingAnchor.constraint(equalTo: parent.leadingAnchor).isActive = true
         trailingAnchor.constraint(equalTo: parent.trailingAnchor).isActive = true
     }
+    
+    enum ViewSide {
+        case Left, Right, Top, Bottom
+    }
+    
+    func addBorder(toSide side: ViewSide, withColor color: CGColor, andThickness thickness: CGFloat, offset:CGFloat) -> CALayer {
+        
+        let border = CALayer()
+        border.backgroundColor = color
+        
+        switch side {
+        case .Left: border.frame = CGRect(x: offset, y: offset, width: thickness, height: frame.height - offset * 2); break
+        case .Right: border.frame = CGRect(x: bounds.width - offset - thickness, y: offset, width: thickness, height: frame.height - offset * 2); break
+        case .Top: border.frame = CGRect(x: offset, y: offset, width: frame.width - offset * 2, height: thickness); break
+        case .Bottom: border.frame = CGRect(x: offset, y: bounds.height - offset - thickness, width: frame.width - offset * 2, height: thickness); break
+        }
+        
+        layer.addSublayer(border)
+        return border
+    }
+    
+    func addBorders(withColor color: CGColor, andThickness thickness: CGFloat, withOffset offset: CGFloat) -> [CALayer] {
+        var borders = [
+            addBorder(toSide: .Top, withColor: color, andThickness: thickness, offset: offset),
+            addBorder(toSide: .Bottom, withColor: color, andThickness: thickness, offset: offset),
+            addBorder(toSide: .Left, withColor: color, andThickness: thickness, offset: offset),
+            addBorder(toSide: .Right, withColor: color, andThickness: thickness, offset: offset)
+        ]
+        return borders
+    }
 }
 
 extension UIStackView {

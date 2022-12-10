@@ -22,6 +22,14 @@ open class FadedScrollView: UIScrollView {
         didSet { endFadeSizeMult = CGFloat(endFadeSize) / 100 }
     }
     
+    @IBInspectable var linearInterpolation: Bool = true
+    // further away from top/bottom borders - disappearing of content slows down
+    @IBInspectable var logarithmicFromEdges: Bool = false
+    // further away from top/bottom borders - disappearing of content speeds up
+    @IBInspectable var exponentialFromEdges: Bool = false
+    
+    var fadeInterpolation: EasyUICalculationHelpers.Interpolation = .linear
+    
     var startFadeSizeMult: CGFloat = 0.1
     var endFadeSizeMult: CGFloat = 0.1
     
@@ -76,6 +84,7 @@ open class FadedScrollView: UIScrollView {
         progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startFadeSizeMult, endFadeSizeMult: endFadeSizeMult)
         configureFadeLayer()
+        configureFadeInterpolation(injectedFromCode: nil)
     }
     
     private func configureFadeLayer() {
@@ -106,6 +115,22 @@ open class FadedScrollView: UIScrollView {
         manageGradientColorsOnScroll()
     }
     
+    // todo add another enum for this specific class
+    private func configureFadeInterpolation(injectedFromCode: EasyUICalculationHelpers.Interpolation?) {
+        if let injectedFromCode = injectedFromCode {
+            self.fadeInterpolation = injectedFromCode
+        } else {
+            if linearInterpolation {
+                self.fadeInterpolation = .linear
+            } else if logarithmicFromEdges {
+                self.fadeInterpolation = .exponentioal
+            } else if exponentialFromEdges {
+                self.fadeInterpolation = .logarithmic
+            } else {
+                self.fadeInterpolation = .linear
+            }
+        }
+    }
 //    open override func layoutSubviews() {
 //        super.layoutSubviews()
 //    }
@@ -118,15 +143,18 @@ open class FadedScrollView: UIScrollView {
             let progress = progressManager.calculateProgress()
             let startAbsProgress = progressManager.calculateStartAlpha(progress: progress)
             let endAbsProgress = progressManager.calculateEndAlpha(progress: progress)
+            let startTransformedProgress = EasyUICalculationHelpers.logarythmicDependence(progress: startAbsProgress, interpolation: fadeInterpolation)
+            let endTransformedProgress = EasyUICalculationHelpers.logarythmicDependence(progress: endAbsProgress, interpolation: fadeInterpolation)
             
             print("progress: \(progress)")
             print("startAbsProgress: \(startAbsProgress), endAbsProgress: \(endAbsProgress)")
+            print("startTransformedProgress: \(startTransformedProgress), endTransformedProgress: \(endTransformedProgress)")
             
             if enableStartFade {
-                colors[0] = opaqueColor.withAlphaComponent(startAbsProgress).cgColor
+                colors[0] = opaqueColor.withAlphaComponent(startTransformedProgress).cgColor
             }
             if enableEndFade {
-                colors[3] = opaqueColor.withAlphaComponent(endAbsProgress).cgColor
+                colors[3] = opaqueColor.withAlphaComponent(endTransformedProgress).cgColor
             }
             
             layerGradient?.colors = colors

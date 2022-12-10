@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
 		52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BC293CF466004E80B7 /* SceneDelegate.swift */; };
 		52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BE293CF466004E80B7 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUICalculationHelpers.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ED65BA293CF466004E80B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52ED65BC293CF466004E80B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		522462FF2944EB1B004F4E01 /* EasyUICalculationHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */,
+			);
+			path = EasyUICalculationHelpers;
+			sourceTree = "<group>";
+		};
 		52ED65AE293CF466004E80B7 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 		52ED65B9293CF466004E80B7 /* EasyUIRawLib */ = {
 			isa = PBXGroup;
 			children = (
+				522462FF2944EB1B004F4E01 /* EasyUICalculationHelpers */,
 				52ED65CE293CF5E2004E80B7 /* PresentationHelpers */,
 				52ED65D1293CF7B8004E80B7 /* PresentationScreens */,
 				52ED65DD293CFC5D004E80B7 /* ReadyElementsHelpers */,
@@ -222,6 +233,7 @@
 				52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */,
 				52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */,
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
+				522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
 				52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */,
 				52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */,
