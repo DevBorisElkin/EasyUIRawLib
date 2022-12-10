@@ -22,6 +22,7 @@ open class FadedScrollView: UIScrollView {
         didSet { endFadeSizeMult = CGFloat(endFadeSize) / 100 }
     }
     
+    @IBInspectable var logarithmicBase: Double = 10
     @IBInspectable var linearInterpolation: Bool = true
     // further away from top/bottom borders - disappearing of content slows down
     @IBInspectable var logarithmicFromEdges: Bool = false
@@ -143,13 +144,15 @@ open class FadedScrollView: UIScrollView {
             let progress = progressManager.calculateProgress()
             let startAbsProgress = progressManager.calculateStartAlpha(progress: progress)
             let endAbsProgress = progressManager.calculateEndAlpha(progress: progress)
-            let startTransformedProgress = EasyUICalculationHelpers.logarythmicDependence(progress: startAbsProgress, interpolation: fadeInterpolation)
-            let endTransformedProgress = EasyUICalculationHelpers.logarythmicDependence(progress: endAbsProgress, interpolation: fadeInterpolation)
+            let startTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
+            let endTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
             
             print("progress: \(progress)")
             print("startAbsProgress: \(startAbsProgress), endAbsProgress: \(endAbsProgress)")
             print("startTransformedProgress: \(startTransformedProgress), endTransformedProgress: \(endTransformedProgress)")
             
+//            print("topColorAlpha: \(opaqueColor.withAlphaComponent(startTransformedProgress).cgColor)")
+//            print("bottomColorAlpha: \(opaqueColor.withAlphaComponent(endTransformedProgress).cgColor)")
             if enableStartFade {
                 colors[0] = opaqueColor.withAlphaComponent(startTransformedProgress).cgColor
             }

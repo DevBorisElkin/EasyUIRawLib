@@ -24,4 +24,22 @@ open class EasyUICalculationHelpers {
         }
         return progress
     }
+    public static func logarythmicBasedDependence(progress: Double, base: Double, interpolation: Interpolation) -> Double {
+        if interpolation == .logarithmic {
+            let progressRemapped = remap(value: progress, from1: 0, to1: 1, from2: 1, to2: 10)
+            return clamp(value: logC(val: progressRemapped, forBase: base), min: 0, max: 1)
+        } else if interpolation == .exponentioal {
+            let progressReversed = remap(value: (1 - progress), from1: 0, to1: 1, from2: 1, to2: 10)
+            return clamp(value: 1 - (logC(val: progressReversed, forBase: base)), min: 0, max: 1)
+        }
+        return progress
+    }
+    
+    public static func clamp(value: Double, min minVal: Double, max maxVal: Double) -> Double {
+        return max(minVal, min(maxVal, value))
+    }
+    
+    public static func logC(val: Double, forBase base: Double) -> Double {
+        return log(val)/log(base)
+    }
 }
