@@ -153,8 +153,8 @@ open class FadedScrollView: UIScrollView {
         log("manageGradientColorsOnScroll, isVertical: \(isVertical)")
         if var colors = layerGradient?.colors as? [CGColor] {
             let progress = progressManager.calculateProgress()
-            let startAbsProgress = progressManager.calculateStartAlpha(progress: progress)
-            let endAbsProgress = progressManager.calculateEndAlpha(progress: progress)
+            let startAbsProgress = progressManager.calculateStartFadeProgress()
+            let endAbsProgress = progressManager.calculateEndFadeProgress()
             let startTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
             let endTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
             
@@ -181,7 +181,7 @@ open class FadedScrollView: UIScrollView {
     }
     
     open class ProgressManager {
-        internal weak var parentScrollView: UIScrollView?
+        internal weak var parentScrollView: UIScrollView!
         internal var startFadeSizeMult: CGFloat = 0
         internal var endFadeSizeMult: CGFloat = 0
         internal var debugModeEnabled: Bool
@@ -190,15 +190,49 @@ open class FadedScrollView: UIScrollView {
             self.debugModeEnabled = debugModeEnabled
         }
         
-        func calculateProgress() -> CGFloat { print("Internal Error! Base class ProgressManager method is being called!"); return 0 }
+        // for debugging only
+        func calculateProgress() -> CGFloat {
+            let maxHeightForProgress = contentSize() - scrollViewSize()
+            return max(min(contentOffset() / maxHeightForProgress, 1), 0)
+        }
+        // deprecated
         func calculateStartAlpha(progress: CGFloat) -> CGFloat {
             if progress > startFadeSizeMult { return 0 }
             return CGFloat(1) - progress / startFadeSizeMult
         }
+        // deprecated
         func calculateEndAlpha(progress: CGFloat) -> CGFloat {
             let progressMargin = CGFloat(1) - endFadeSizeMult
             if progress < progressMargin { return 0 }
             return (progress - progressMargin) / endFadeSizeMult
+        }
+        
+        func scrollViewSize() -> CGFloat { print("Internal Error! Base class ProgressManager method is being called!"); return 0 }
+        func contentSize() -> CGFloat { print("Internal Error! Base class ProgressManager method is being called!"); return 0 }
+        func contentOffset() -> CGFloat { print("Internal Error! Base class ProgressManager method is being called!"); return 0 }
+        func effectiveContentOffset() -> CGFloat {
+            return contentOffset() + scrollViewSize()
+        }
+        
+        func calculateStartFadeProgress() -> CGFloat {
+            let maxProgress = scrollViewSize() * startFadeSizeMult
+            if contentOffset() > maxProgress { return 0 }
+            
+            return 1 - (contentOffset() / maxProgress)
+        }
+        func calculateEndFadeProgress() -> CGFloat {
+//            print("CONTENT OFFSET: \(contentOffset())")
+//            print("CONTENT SIZE: \(contentSize())")
+//            print("EFFECTIVE CONTENT OFFSET: \(effectiveContentOffset())")
+            let minProgress = contentSize() * (1 - endFadeSizeMult)
+            if effectiveContentOffset() < minProgress { return 0 }
+            
+            let diff = contentSize() - minProgress
+            let resultDiff = effectiveContentOffset() - minProgress
+            print("DIFF: \(diff)")
+            print("RESULT DIFF: \(resultDiff)")
+            
+            return resultDiff / diff
         }
         
         func configure(parentScrollView: UIScrollView?, startFadeSizeMult: CGFloat, endFadeSizeMult: CGFloat) {
@@ -225,6 +259,16 @@ open class FadedScrollView: UIScrollView {
             let maxHeightForProgress = contentSize - parentScrollView.bounds.height
             return max(min(contentOffset / maxHeightForProgress, 1), 0)
         }
+        
+        override func scrollViewSize() -> CGFloat {
+            parentScrollView.bounds.height
+        }
+        override func contentSize() -> CGFloat {
+            parentScrollView.contentSize.height
+        }
+        override func contentOffset() -> CGFloat {
+            parentScrollView.contentOffset.y
+        }
     }
     
     class HorizontalProgressManager: ProgressManager {
@@ -239,6 +283,16 @@ open class FadedScrollView: UIScrollView {
             log("contentSize: \(contentSize), contentOffset: \(contentOffset)")
             let maxWidthForProgress = contentSize - parentScrollView.bounds.width
             return max(min(contentOffset / maxWidthForProgress, 1), 0)
+        }
+        
+        override func scrollViewSize() -> CGFloat {
+            parentScrollView.bounds.width
+        }
+        override func contentSize() -> CGFloat {
+            parentScrollView.contentSize.width
+        }
+        override func contentOffset() -> CGFloat {
+            parentScrollView.contentOffset.x
         }
     }
 }
