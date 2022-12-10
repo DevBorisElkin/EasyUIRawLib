@@ -218,21 +218,13 @@ open class FadedScrollView: UIScrollView {
             let maxProgress = scrollViewSize() * startFadeSizeMult
             if contentOffset() > maxProgress { return 0 }
             
-            return 1 - (contentOffset() / maxProgress)
+            return min(1 - (contentOffset() / maxProgress), 1)
         }
         func calculateEndFadeProgress() -> CGFloat {
-//            print("CONTENT OFFSET: \(contentOffset())")
-//            print("CONTENT SIZE: \(contentSize())")
-//            print("EFFECTIVE CONTENT OFFSET: \(effectiveContentOffset())")
-            let minProgress = contentSize() * (1 - endFadeSizeMult)
-            if effectiveContentOffset() < minProgress { return 0 }
-            
-            let diff = contentSize() - minProgress
-            let resultDiff = effectiveContentOffset() - minProgress
-            print("DIFF: \(diff)")
-            print("RESULT DIFF: \(resultDiff)")
-            
-            return resultDiff / diff
+            let scrolledFromEnd = contentSize() - effectiveContentOffset()
+            let maxProgress = scrollViewSize() * startFadeSizeMult
+            if scrolledFromEnd > maxProgress { return 0 }
+            return min(1 - scrolledFromEnd / maxProgress, 1)
         }
         
         func configure(parentScrollView: UIScrollView?, startFadeSizeMult: CGFloat, endFadeSizeMult: CGFloat) {
