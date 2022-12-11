@@ -28,7 +28,7 @@ open class FadedScrollView: UIScrollView {
     }
     
     /// min is 2. preferred max is 10, the smaller the value, the steeper the transition
-    @IBInspectable private var logarithmicBase: Double = 2
+    @IBInspectable private var logarithmicBase: Double = 5
     
     @IBInspectable private var linearInterpolation: Bool = true
     // further away from top/bottom borders - disappearing of content slows down
@@ -45,8 +45,8 @@ open class FadedScrollView: UIScrollView {
     private var startProgressToHideFade: CGFloat = 0.10
     private var endProgressToHideFade: CGFloat = 0.10
     
-    @IBInspectable private var debugModeEnabled: Bool = false
-    @IBInspectable private var progressLogs: Bool = false
+    @IBInspectable var debugModeEnabled: Bool = false
+    @IBInspectable var debugProgressLogs: Bool = false
     
     // Internal items
     private var layerGradient: CAGradientLayer?
@@ -56,7 +56,7 @@ open class FadedScrollView: UIScrollView {
     private let opaqueColor = UIColor.white
     private lazy var cgOpaqueColor = opaqueColor.cgColor
     
-    private open progressManager: ProgressManager!
+    open var progressManager: ProgressManager!
     
     private var internalEnabledCheck: Bool {
         enableStartFade || enableEndFade
@@ -78,14 +78,18 @@ open class FadedScrollView: UIScrollView {
         }
     }
     
-    func configure(startFadeSize: CGFloat, endFadeSize: CGFloat) {
-        self.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .logarithmicFromEdges, logarithmicBase: 2)
+    func configureLinear(startFadeSize: CGFloat, endFadeSize: CGFloat) {
+        self.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .linear, logarithmicBase: 0)
     }
     
-    func configure(isVertical: Bool = true, enableStartFade: Bool = true, enableEndFade: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 2) {
+    func configureLogarithmic(startFadeSize: CGFloat, endFadeSize: CGFloat, logarithmicBase: CGFloat = 5) {
+        self.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .logarithmicFromEdges, logarithmicBase: logarithmicBase)
+    }
+    
+    func configure(isVertical: Bool = true, enableStartFade: Bool = true, enableEndFade: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 5) {
         self.isVertical = isVertical
-        self.enableStartFade = enableStartFade
-        self.enableEndFade = enableEndFade
+        self.enableStartFade = enableStartFade && startFadeSizeMult > 0
+        self.enableEndFade = enableEndFade && endFadeSizeMult > 0
         self.startFadeSize = startFadeSizeMult
         self.endFadeSize = endFadeSizeMult
         self.startProgressToHideFade = startProgressToHideFade
@@ -180,7 +184,7 @@ open class FadedScrollView: UIScrollView {
         print(message)
     }
     private func progressLog(_ message: String) {
-        guard progressLogs else { return }
+        guard debugProgressLogs else { return }
         print(message)
     }
     

@@ -8,11 +8,102 @@
 import UIKit
 
 class Example_1_ScrollView: UIView {
-    @IBOutlet weak var fadedScroll1: FadedScrollView!
-    @IBOutlet weak var fadedScroll2: FadedScrollView!
+    @IBOutlet weak var parentForFadedScrollView_1: UIView!
+    @IBOutlet weak var parentForFadedScrollView_2: UIView!
+    @IBOutlet weak var parentForFadedScrollView_3: UIView!
     
     override func awakeFromNib() {
-//        fadedScroll1.addBorders(withColor: UIColor.black.cgColor, andThickness: 0.5, withOffset: 0)
-//        fadedScroll2.addBorders(withColor: UIColor.black.cgColor, andThickness: 0.5, withOffset: 0)
+        createFirst()
+        createSecond()
+    }
+    
+    func createFirst() {
+        let fadedScrollView_1 = FadedScrollView()
+        fadedScrollView_1.translatesAutoresizingMaskIntoConstraints = false
+        
+        parentForFadedScrollView_1.addSubview(fadedScrollView_1)
+        NSLayoutConstraint.activate([
+            fadedScrollView_1.topAnchor.constraint(equalTo: parentForFadedScrollView_1.topAnchor),
+            fadedScrollView_1.leadingAnchor.constraint(equalTo: parentForFadedScrollView_1.leadingAnchor),
+            fadedScrollView_1.trailingAnchor.constraint(equalTo: parentForFadedScrollView_1.trailingAnchor),
+            fadedScrollView_1.bottomAnchor.constraint(equalTo: parentForFadedScrollView_1.bottomAnchor)
+        ])
+        
+        let contentStackView = UIStackView()
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.axis = .vertical
+        contentStackView.spacing = 20
+        
+        for i in 1...10 {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .red
+            view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            
+            contentStackView.addArrangedSubview(view)
+        }
+        
+        fadedScrollView_1.addSubview(contentStackView)
+        contentStackView.topAnchor.constraint(equalTo: fadedScrollView_1.topAnchor).isActive = true
+        contentStackView.leadingAnchor.constraint(equalTo: fadedScrollView_1.leadingAnchor).isActive = true
+        contentStackView.trailingAnchor.constraint(equalTo: fadedScrollView_1.trailingAnchor).isActive = true
+        contentStackView.bottomAnchor.constraint(equalTo: fadedScrollView_1.bottomAnchor).isActive = true
+        
+        contentStackView.leadingAnchor.constraint(equalTo: fadedScrollView_1.frameLayoutGuide.leadingAnchor).isActive = true
+        contentStackView.trailingAnchor.constraint(equalTo: fadedScrollView_1.frameLayoutGuide.trailingAnchor).isActive = true
+        contentStackView.topAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.topAnchor).isActive = true
+        contentStackView.heightAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.heightAnchor).isActive = true
+        
+        fadedScrollView_1.configureLogarithmic(startFadeSize: 0.3, endFadeSize: 0.1)
+    }
+    
+    func createSecond() {
+        let fadedScrollView_1 = FadedScrollView()
+        fadedScrollView_1.translatesAutoresizingMaskIntoConstraints = false
+        //fadedScrollView_1.backgroundColor = .brown
+        
+        parentForFadedScrollView_2.addSubview(fadedScrollView_1)
+        NSLayoutConstraint.activate([
+            fadedScrollView_1.topAnchor.constraint(equalTo: parentForFadedScrollView_2.topAnchor),
+            fadedScrollView_1.leadingAnchor.constraint(equalTo: parentForFadedScrollView_2.leadingAnchor),
+            fadedScrollView_1.trailingAnchor.constraint(equalTo: parentForFadedScrollView_2.trailingAnchor),
+            fadedScrollView_1.bottomAnchor.constraint(equalTo: parentForFadedScrollView_2.bottomAnchor)
+        ])
+        
+        let contentStackView = UIStackView()
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentStackView.axis = .vertical
+        contentStackView.spacing = 0
+        
+        for i in 1...50 {
+            let view = UILabel()
+            view.text = "Hello There!"
+            view.translatesAutoresizingMaskIntoConstraints = false
+            //view.backgroundColor = .red
+            view.textColor = .black
+            //view.heightAnchor.constraint(equalToConstant: 100).isActive = true
+            
+            contentStackView.addArrangedSubview(view)
+        }
+        
+        fadedScrollView_1.addSubview(contentStackView)
+        contentStackView.topAnchor.constraint(equalTo: fadedScrollView_1.topAnchor).isActive = true
+        contentStackView.leadingAnchor.constraint(equalTo: fadedScrollView_1.leadingAnchor).isActive = true
+        contentStackView.trailingAnchor.constraint(equalTo: fadedScrollView_1.trailingAnchor).isActive = true
+        contentStackView.bottomAnchor.constraint(equalTo: fadedScrollView_1.bottomAnchor).isActive = true
+        
+        contentStackView.leadingAnchor.constraint(equalTo: fadedScrollView_1.frameLayoutGuide.leadingAnchor).isActive = true
+        contentStackView.trailingAnchor.constraint(equalTo: fadedScrollView_1.frameLayoutGuide.trailingAnchor).isActive = true
+        contentStackView.topAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.topAnchor).isActive = true
+        contentStackView.heightAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.heightAnchor).isActive = true
+        
+//        fadedScrollView_1.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: 0.3, endFadeSizeMult: 0.3, startProgressToHideFade: 0.3, endProgressToHideFade: 0.3, interpolation: .linear, logarithmicBase: 2)
+        
+        //fadedScrollView_1.configureLogarithmic(startFadeSize: 0, endFadeSize: 0.2)
+        
+//        fadedScrollView_1.configureLogarithmic(startFadeSize: 0.2, endFadeSize: 0.2)
+        
+        fadedScrollView_1.configure(startFadeSizeMult: 0.25, endFadeSizeMult: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .linear)
+        fadedScrollView_1.debugModeEnabled = true
     }
 }

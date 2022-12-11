@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gHT-jO-hp9">
-                    <rect key="frame" x="41.5" y="15" width="331" height="4330"/>
+                    <rect key="frame" x="41.5" y="15" width="331" height="5030"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dS-Id-Pwc">
                             <rect key="frame" x="0.0" y="0.0" width="331" height="295"/>
@@ -142,7 +142,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                     </userDefinedRuntimeAttributes>
                                 </scrollView>
                             </subviews>
@@ -280,7 +279,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="endFadeSize">
                                             <integer key="value" value="5"/>
                                         </userDefinedRuntimeAttribute>
@@ -415,7 +413,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="NO"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="40"/>
                                         </userDefinedRuntimeAttribute>
@@ -549,7 +546,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
@@ -686,7 +682,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="endFadeSize">
                                             <integer key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
@@ -820,7 +815,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="NO"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="NO"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
@@ -1165,7 +1159,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
@@ -1522,7 +1515,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
@@ -1709,7 +1701,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="YES"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
@@ -1879,7 +1870,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
@@ -2236,7 +2226,6 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableStartFade" value="YES"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="enableEndFade" value="YES"/>
-                                        <userDefinedRuntimeAttribute type="boolean" keyPath="debugModeEnabled" value="NO"/>
                                         <userDefinedRuntimeAttribute type="number" keyPath="startFadeSize">
                                             <integer key="value" value="20"/>
                                         </userDefinedRuntimeAttribute>
@@ -2261,11 +2250,42 @@
                                 <constraint firstAttribute="bottom" secondItem="b0w-Kq-jfI" secondAttribute="bottom" id="h5j-FE-8fI"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-tS-SHj" userLabel="Test">
-                            <rect key="frame" x="0.0" y="4035" width="331" height="295"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jw3-km-kzY" userLabel="DescriptionBlock">
+                            <rect key="frame" x="0.0" y="4035" width="331" height="50"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spawned content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3c-Y5-4yc">
+                                    <rect key="frame" x="89" y="13" width="153.5" height="24"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="O3c-Y5-4yc" firstAttribute="centerX" secondItem="Jw3-km-kzY" secondAttribute="centerX" id="PAs-Ip-ASY"/>
+                                <constraint firstAttribute="height" constant="50" id="eEe-Av-hhN"/>
+                                <constraint firstItem="O3c-Y5-4yc" firstAttribute="centerY" secondItem="Jw3-km-kzY" secondAttribute="centerY" id="k83-H5-2Sf"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-tS-SHj" userLabel="ParentForSpawnedScrollView_1">
+                            <rect key="frame" x="0.0" y="4105" width="331" height="295"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="295" id="zo8-Tx-fWr"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zfI-Nk-DUZ" userLabel="ParentForSpawnedScrollView_2">
+                            <rect key="frame" x="0.0" y="4420" width="331" height="295"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="295" id="4hY-SV-Obw"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpO-v9-XTt" userLabel="ParentForSpawnedScrollView_3">
+                            <rect key="frame" x="0.0" y="4735" width="331" height="295"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="295" id="qZE-3y-shD"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -2280,7 +2300,9 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="fadedScroll1" destination="iSA-7l-VSn" id="zbP-gC-ejd"/>
+                <outlet property="parentForFadedScrollView_1" destination="T5D-tS-SHj" id="6zl-HV-9eg"/>
+                <outlet property="parentForFadedScrollView_2" destination="zfI-Nk-DUZ" id="iHA-xF-nz0"/>
+                <outlet property="parentForFadedScrollView_3" destination="SpO-v9-XTt" id="Fd7-Vc-Ink"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="1795.6473214285713"/>
         </view>
