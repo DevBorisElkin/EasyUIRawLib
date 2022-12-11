@@ -78,10 +78,10 @@ class Example_1_ScrollView: UIView {
         
         //spawnContentForSecondScrollView()
         
-        fadedScrollView_1.configure(startFadeSizeMult: 0.25, endFadeSizeMult: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .linear)
+        fadedScrollView_1.configure(startFadeSizeMult: 0.25, endFadeSizeMult: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .linear, debugModeEnabled: true, debugProgressLogs: true)
         
-        // doesn't work?
-        //fadedScrollView_1.debugModeEnabled = true
+        
+        
         
     }
     

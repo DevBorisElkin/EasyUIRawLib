@@ -73,6 +73,7 @@ open class FadedScrollView: UIScrollView {
     open override var contentOffset: CGPoint {
         didSet {
             guard internalEnabledCheck else { return }
+            log("contentOffsetChanged to: \(contentOffset)")
             CATransaction.begin()
             CATransaction.setDisableActions(true)
             layerGradient?.frame = safeAreaLayoutGuide.layoutFrame
@@ -89,7 +90,7 @@ open class FadedScrollView: UIScrollView {
         self.configure(isVertical: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .logarithmicFromEdges, logarithmicBase: logarithmicBase)
     }
     
-    func configure(isVertical: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 5) {
+    func configure(isVertical: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 5, debugModeEnabled: Bool = false, debugProgressLogs: Bool = false) {
         self.isVertical = isVertical
         self.startFadeSize = startFadeSizeMult
         self.endFadeSize = endFadeSizeMult
@@ -97,6 +98,8 @@ open class FadedScrollView: UIScrollView {
         self.endProgressToHideFade = endProgressToHideFade
         self.interpolation = interpolation
         self.logarithmicBase = logarithmicBase
+        self.debugModeEnabled = debugModeEnabled
+        self.debugProgressLogs = debugProgressLogs
         commonInit()
     }
     
@@ -215,16 +218,14 @@ open class FadedScrollView: UIScrollView {
         }
         
         func calculateStartFadeProgress() -> CGFloat {
-            if scrollViewSize() >= contentSize() { return 1 }
             let maxProgress = scrollViewSize() * startFadeSizeMult
             if contentOffset() > maxProgress { return 0 }
             
             return min(1 - (contentOffset() / maxProgress), 1)
         }
         func calculateEndFadeProgress() -> CGFloat {
-            if scrollViewSize() >= contentSize() { return 1 }
             let scrolledFromEnd = contentSize() - effectiveContentOffset()
-            let maxProgress = scrollViewSize() * startFadeSizeMult
+            let maxProgress = scrollViewSize() * endFadeSizeMult
             if scrolledFromEnd > maxProgress { return 0 }
             return min(1 - scrolledFromEnd / maxProgress, 1)
         }
