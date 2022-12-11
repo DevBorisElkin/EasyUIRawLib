@@ -9,6 +9,9 @@ import UIKit
 
 // todo fix logs at start
 // todo find a way to make other scrollable items the same
+// todo think how to add progressDelegate
+// 1) Notify on progress changed
+// 2) Notify on scrolled to start / end of scroll
 open class FadedScrollView: UIScrollView {
     @IBInspectable private var isVertical: Bool = true
     
@@ -212,12 +215,14 @@ open class FadedScrollView: UIScrollView {
         }
         
         func calculateStartFadeProgress() -> CGFloat {
+            if scrollViewSize() >= contentSize() { return 1 }
             let maxProgress = scrollViewSize() * startFadeSizeMult
             if contentOffset() > maxProgress { return 0 }
             
             return min(1 - (contentOffset() / maxProgress), 1)
         }
         func calculateEndFadeProgress() -> CGFloat {
+            if scrollViewSize() >= contentSize() { return 1 }
             let scrolledFromEnd = contentSize() - effectiveContentOffset()
             let maxProgress = scrollViewSize() * startFadeSizeMult
             if scrolledFromEnd > maxProgress { return 0 }

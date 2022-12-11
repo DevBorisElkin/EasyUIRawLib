@@ -15,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gHT-jO-hp9">
-                    <rect key="frame" x="41.5" y="15" width="331" height="5030"/>
+                    <rect key="frame" x="41.5" y="15" width="331" height="4835"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3dS-Id-Pwc">
                             <rect key="frame" x="0.0" y="0.0" width="331" height="295"/>
@@ -2281,11 +2281,74 @@
                                 <constraint firstAttribute="height" constant="295" id="4hY-SV-Obw"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpO-v9-XTt" userLabel="ParentForSpawnedScrollView_3">
-                            <rect key="frame" x="0.0" y="4735" width="331" height="295"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SpO-v9-XTt" userLabel="ParentForButton">
+                            <rect key="frame" x="0.0" y="4735" width="331" height="100"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lft-p8-iRW">
+                                    <rect key="frame" x="0.0" y="0.0" width="331" height="100"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qy5-B2-d7r">
+                                            <rect key="frame" x="0.0" y="0.0" width="331" height="65.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlQ-fN-Sal" userLabel="ClearContent">
+                                                    <rect key="frame" x="0.0" y="0.0" width="82.5" height="65.5"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="ClearContent"/>
+                                                    <connections>
+                                                        <action selector="clearContent" destination="iN0-l3-epB" eventType="touchUpInside" id="QGx-OV-8NY"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJF-e1-M7P" userLabel="SpawnContent">
+                                                    <rect key="frame" x="82.5" y="0.0" width="83" height="65.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="SpawnContent"/>
+                                                    <connections>
+                                                        <action selector="spawnContent" destination="iN0-l3-epB" eventType="touchUpInside" id="EFk-tH-hSR"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDd-Fy-9mX" userLabel="SpawnStack">
+                                                    <rect key="frame" x="165.5" y="0.0" width="83" height="65.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="SpawnStack"/>
+                                                    <connections>
+                                                        <action selector="spawnStackViewToContent" destination="iN0-l3-epB" eventType="touchUpInside" id="7NN-C3-h2P"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C26-sm-tmq" userLabel="SpawnItem">
+                                                    <rect key="frame" x="248.5" y="0.0" width="82.5" height="65.5"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="SpawnItem"/>
+                                                    <connections>
+                                                        <action selector="spawnItemToStackView" destination="iN0-l3-epB" eventType="touchUpInside" id="f66-2p-7fa"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtp-ra-TJ5">
+                                            <rect key="frame" x="0.0" y="65.5" width="331" height="34.5"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSt-Cs-Vfy" userLabel="removeLastItem">
+                                                    <rect key="frame" x="0.0" y="0.0" width="331" height="34.5"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="removeLastItem"/>
+                                                    <connections>
+                                                        <action selector="removeLastItemFromStackView" destination="iN0-l3-epB" eventType="touchUpInside" id="pv4-Ye-ejC"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="295" id="qZE-3y-shD"/>
+                                <constraint firstAttribute="bottom" secondItem="lft-p8-iRW" secondAttribute="bottom" id="7vM-qQ-wHf"/>
+                                <constraint firstItem="lft-p8-iRW" firstAttribute="leading" secondItem="SpO-v9-XTt" secondAttribute="leading" id="DC7-TS-Q0Q"/>
+                                <constraint firstItem="lft-p8-iRW" firstAttribute="top" secondItem="SpO-v9-XTt" secondAttribute="top" id="Q9q-MX-6NK"/>
+                                <constraint firstAttribute="trailing" secondItem="lft-p8-iRW" secondAttribute="trailing" id="Xng-Le-J8w"/>
+                                <constraint firstAttribute="height" constant="100" id="qZE-3y-shD"/>
                             </constraints>
                         </view>
                     </subviews>

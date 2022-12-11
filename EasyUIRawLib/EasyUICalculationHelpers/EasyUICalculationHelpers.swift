@@ -25,6 +25,7 @@ open class EasyUICalculationHelpers {
         return progress
     }
     public static func logarythmicBasedDependence(progress: Double, base: Double, interpolation: Interpolation) -> Double {
+        if progress == 0 { return 0 }
         if interpolation == .logarithmic {
             let progressRemapped = remap(value: progress, from1: 0, to1: 1, from2: 1, to2: 10)
             return clamp(value: logC(val: progressRemapped, forBase: base), min: 0, max: 1)
