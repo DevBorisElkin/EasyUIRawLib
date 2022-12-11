@@ -7,12 +7,10 @@
 
 import UIKit
 
+// todo fix logs at start
+// todo find a way to make other scrollable items the same
 open class FadedScrollView: UIScrollView {
     @IBInspectable private var isVertical: Bool = true
-    
-    @IBInspectable private var enableStartFade: Bool = true
-    
-    @IBInspectable private var enableEndFade: Bool = true
     
     @IBInspectable private var startFadeSizePercents: Int = 10 {
         didSet { startFadeSize = CGFloat(startFadeSizePercents) / 100 }
@@ -40,6 +38,8 @@ open class FadedScrollView: UIScrollView {
     
     private var fadeInterpolation: EasyUICalculationHelpers.Interpolation = .linear
     
+    private var enableStartFade: Bool = true
+    private var enableEndFade: Bool = true
     private var startFadeSize: CGFloat = 0.1
     private var endFadeSize: CGFloat = 0.1
     private var startProgressToHideFade: CGFloat = 0.10
@@ -79,17 +79,15 @@ open class FadedScrollView: UIScrollView {
     }
     
     func configureLinear(startFadeSize: CGFloat, endFadeSize: CGFloat) {
-        self.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .linear, logarithmicBase: 0)
+        self.configure(isVertical: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .linear, logarithmicBase: 0)
     }
     
     func configureLogarithmic(startFadeSize: CGFloat, endFadeSize: CGFloat, logarithmicBase: CGFloat = 5) {
-        self.configure(isVertical: true, enableStartFade: true, enableEndFade: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .logarithmicFromEdges, logarithmicBase: logarithmicBase)
+        self.configure(isVertical: true, startFadeSizeMult: startFadeSize, endFadeSizeMult: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: .logarithmicFromEdges, logarithmicBase: logarithmicBase)
     }
     
-    func configure(isVertical: Bool = true, enableStartFade: Bool = true, enableEndFade: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 5) {
+    func configure(isVertical: Bool = true, startFadeSizeMult: CGFloat = 0.15, endFadeSizeMult: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: FadeInterpolation = .logarithmicFromEdges, logarithmicBase: Double = 5) {
         self.isVertical = isVertical
-        self.enableStartFade = enableStartFade && startFadeSizeMult > 0
-        self.enableEndFade = enableEndFade && endFadeSizeMult > 0
         self.startFadeSize = startFadeSizeMult
         self.endFadeSize = endFadeSizeMult
         self.startProgressToHideFade = startProgressToHideFade
@@ -101,7 +99,8 @@ open class FadedScrollView: UIScrollView {
     
     private func commonInit() {
         log("FadedScrollView.CommonInit() / isVertical: \(isVertical)")
-        guard internalEnabledCheck else { return }
+        self.enableStartFade = startFadeSize > 0
+        self.enableEndFade = endFadeSize > 0
         
         progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startProgressToHideFade, endFadeSizeMult: endProgressToHideFade)
@@ -155,20 +154,21 @@ open class FadedScrollView: UIScrollView {
         log("manageGradientColorsOnScroll, isVertical: \(isVertical)")
         if var colors = layerGradient?.colors as? [CGColor] {
             let progress = progressManager.calculateProgress()
-            let startAbsProgress = progressManager.calculateStartFadeProgress()
-            let endAbsProgress = progressManager.calculateEndFadeProgress()
-            let startTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
-            let endTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
             
             progressLog("progress: \(progress)")
-            progressLog("startAbsProgress: \(startAbsProgress), endAbsProgress: \(endAbsProgress)")
-            progressLog("startTransformedProgress: \(startTransformedProgress), endTransformedProgress: \(endTransformedProgress)")
-            
             if enableStartFade {
+                let startAbsProgress = progressManager.calculateStartFadeProgress()
+                let startTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
                 colors[0] = opaqueColor.withAlphaComponent(startTransformedProgress).cgColor
+                progressLog("startAbsProgress: \(startAbsProgress)")
+                progressLog("startTransformedProgress: \(startTransformedProgress)")
             }
             if enableEndFade {
+                let endAbsProgress = progressManager.calculateEndFadeProgress()
+                let endTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, base: logarithmicBase, interpolation: fadeInterpolation)
                 colors[3] = opaqueColor.withAlphaComponent(endTransformedProgress).cgColor
+                progressLog("endAbsProgress: \(endAbsProgress)")
+                progressLog("endTransformedProgress: \(endTransformedProgress)")
             }
             
             layerGradient?.colors = colors
@@ -241,14 +241,6 @@ open class FadedScrollView: UIScrollView {
             super.init(debugModeEnabled: debugModeEnabled)
             log("VerticalProgressManager created")
         }
-        override func calculateProgress() -> CGFloat {
-            guard let parentScrollView = parentScrollView else { print("Internal error! ScrollView not assigned."); return 0 }
-            let contentSize = parentScrollView.contentSize.height
-            let contentOffset = parentScrollView.contentOffset.y
-            let maxHeightForProgress = contentSize - parentScrollView.bounds.height
-            return max(min(contentOffset / maxHeightForProgress, 1), 0)
-        }
-        
         override func scrollViewSize() -> CGFloat { parentScrollView.bounds.height }
         override func contentSize() -> CGFloat { parentScrollView.contentSize.height }
         override func contentOffset() -> CGFloat { parentScrollView.contentOffset.y }
@@ -259,15 +251,6 @@ open class FadedScrollView: UIScrollView {
             super.init(debugModeEnabled: debugModeEnabled)
             log("HorizontalProgressManager created")
         }
-        override func calculateProgress() -> CGFloat {
-            guard let parentScrollView = parentScrollView else { print("Internal error! ScrollView not assigned."); return 0 }
-            let contentSize = parentScrollView.contentSize.width
-            let contentOffset = parentScrollView.contentOffset.x
-            log("contentSize: \(contentSize), contentOffset: \(contentOffset)")
-            let maxWidthForProgress = contentSize - parentScrollView.bounds.width
-            return max(min(contentOffset / maxWidthForProgress, 1), 0)
-        }
-        
         override func scrollViewSize() -> CGFloat { parentScrollView.bounds.width }
         override func contentSize() -> CGFloat { parentScrollView.contentSize.width }
         override func contentOffset() -> CGFloat { parentScrollView.contentOffset.x }
