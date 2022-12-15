@@ -12,6 +12,11 @@ import UIKit
 // todo think how to add progressDelegate
 // 1) Notify on progress changed
 // 2) Notify on scrolled to start / end of scroll
+
+
+// END TASK: CocoaPods Library with open source code and test app on AppStore to test different Scrolls and
+// ability to create your own FadedScrollView with custom settings from within the User Interface to see how it works
+
 open class FadedScrollView: UIScrollView {
     @IBInspectable private var isVertical: Bool = true
     

@@ -23,6 +23,8 @@
 		52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65E0293D4B0B004E80B7 /* ScrollViewFactory.swift */; };
 		52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65E2293D4CA5004E80B7 /* Example_1_ScrollView.xib */; };
 		52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65E4293D4D00004E80B7 /* Example_1_ScrollView.swift */; };
+		52F1F20B294B2F7200446F77 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20A294B2F7200446F77 /* AnimatedButton.swift */; };
+		52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20C294B375900446F77 /* ClickAnimatedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		52ED65E0293D4B0B004E80B7 /* ScrollViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFactory.swift; sourceTree = "<group>"; };
 		52ED65E2293D4CA5004E80B7 /* Example_1_ScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Example_1_ScrollView.xib; sourceTree = "<group>"; };
 		52ED65E4293D4D00004E80B7 /* Example_1_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_1_ScrollView.swift; sourceTree = "<group>"; };
+		52F1F20A294B2F7200446F77 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
+		52F1F20C294B375900446F77 /* ClickAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickAnimatedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				52ED65DA293CFA55004E80B7 /* FadedScrollView */,
+				52F1F209294B2F5C00446F77 /* AnimatedButton */,
 			);
 			path = ReadyUIElements;
 			sourceTree = "<group>";
@@ -151,6 +156,15 @@
 				52ED65E0293D4B0B004E80B7 /* ScrollViewFactory.swift */,
 			);
 			path = ReadyElementsHelpers;
+			sourceTree = "<group>";
+		};
+		52F1F209294B2F5C00446F77 /* AnimatedButton */ = {
+			isa = PBXGroup;
+			children = (
+				52F1F20A294B2F7200446F77 /* AnimatedButton.swift */,
+				52F1F20C294B375900446F77 /* ClickAnimatedView.swift */,
+			);
+			path = AnimatedButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,12 +244,14 @@
 				52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */,
 				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
 				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
+				52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */,
 				52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */,
 				52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */,
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
 				522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
 				52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */,
+				52F1F20B294B2F7200446F77 /* AnimatedButton.swift in Sources */,
 				52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +399,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T74HR6T3C3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EasyUIRawLib/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -410,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T74HR6T3C3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EasyUIRawLib/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
