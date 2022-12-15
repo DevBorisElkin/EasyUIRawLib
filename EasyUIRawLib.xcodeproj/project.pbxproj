@@ -23,8 +23,12 @@
 		52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65E0293D4B0B004E80B7 /* ScrollViewFactory.swift */; };
 		52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52ED65E2293D4CA5004E80B7 /* Example_1_ScrollView.xib */; };
 		52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65E4293D4D00004E80B7 /* Example_1_ScrollView.swift */; };
-		52F1F20B294B2F7200446F77 /* AnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20A294B2F7200446F77 /* AnimatedButton.swift */; };
+		52F1F20B294B2F7200446F77 /* ClickAnimatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20A294B2F7200446F77 /* ClickAnimatedButton.swift */; };
 		52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20C294B375900446F77 /* ClickAnimatedView.swift */; };
+		52F1F210294B3C8700446F77 /* UIElementsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F20F294B3C8700446F77 /* UIElementsTests.swift */; };
+		52F1F212294B3C9900446F77 /* UIElementsTests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F1F211294B3C9900446F77 /* UIElementsTests.storyboard */; };
+		52F1F214294B425F00446F77 /* TestScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F213294B425F00446F77 /* TestScrollView.swift */; };
+		52F1F216294B49AF00446F77 /* ClickAnimatedRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F1F215294B49AF00446F77 /* ClickAnimatedRoundedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +50,12 @@
 		52ED65E0293D4B0B004E80B7 /* ScrollViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewFactory.swift; sourceTree = "<group>"; };
 		52ED65E2293D4CA5004E80B7 /* Example_1_ScrollView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Example_1_ScrollView.xib; sourceTree = "<group>"; };
 		52ED65E4293D4D00004E80B7 /* Example_1_ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_1_ScrollView.swift; sourceTree = "<group>"; };
-		52F1F20A294B2F7200446F77 /* AnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedButton.swift; sourceTree = "<group>"; };
+		52F1F20A294B2F7200446F77 /* ClickAnimatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickAnimatedButton.swift; sourceTree = "<group>"; };
 		52F1F20C294B375900446F77 /* ClickAnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickAnimatedView.swift; sourceTree = "<group>"; };
+		52F1F20F294B3C8700446F77 /* UIElementsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementsTests.swift; sourceTree = "<group>"; };
+		52F1F211294B3C9900446F77 /* UIElementsTests.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UIElementsTests.storyboard; sourceTree = "<group>"; };
+		52F1F213294B425F00446F77 /* TestScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScrollView.swift; sourceTree = "<group>"; };
+		52F1F215294B49AF00446F77 /* ClickAnimatedRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickAnimatedRoundedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,7 @@
 			children = (
 				52ED65CF293CF5F0004E80B7 /* RoutingButton.swift */,
 				52ED65D7293CF8F5004E80B7 /* Extensions.swift */,
+				52F1F213294B425F00446F77 /* TestScrollView.swift */,
 			);
 			path = PresentationHelpers;
 			sourceTree = "<group>";
@@ -116,6 +125,7 @@
 		52ED65D1293CF7B8004E80B7 /* PresentationScreens */ = {
 			isa = PBXGroup;
 			children = (
+				52F1F20E294B3C6700446F77 /* UIElementsTests */,
 				52ED65D2293CF7CE004E80B7 /* Example_1_UITextViewScrollableFaded */,
 			);
 			path = PresentationScreens;
@@ -161,10 +171,20 @@
 		52F1F209294B2F5C00446F77 /* AnimatedButton */ = {
 			isa = PBXGroup;
 			children = (
-				52F1F20A294B2F7200446F77 /* AnimatedButton.swift */,
+				52F1F20A294B2F7200446F77 /* ClickAnimatedButton.swift */,
 				52F1F20C294B375900446F77 /* ClickAnimatedView.swift */,
+				52F1F215294B49AF00446F77 /* ClickAnimatedRoundedButton.swift */,
 			);
 			path = AnimatedButton;
+			sourceTree = "<group>";
+		};
+		52F1F20E294B3C6700446F77 /* UIElementsTests */ = {
+			isa = PBXGroup;
+			children = (
+				52F1F20F294B3C8700446F77 /* UIElementsTests.swift */,
+				52F1F211294B3C9900446F77 /* UIElementsTests.storyboard */,
+			);
+			path = UIElementsTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,6 +250,7 @@
 				52ED65D4293CF838004E80B7 /* Example_1_UIScrollViewFaded.storyboard in Resources */,
 				52ED65C4293CF46A004E80B7 /* Assets.xcassets in Resources */,
 				52ED65C2293CF466004E80B7 /* Main.storyboard in Resources */,
+				52F1F212294B3C9900446F77 /* UIElementsTests.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,16 +263,19 @@
 			files = (
 				52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */,
 				52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */,
+				52F1F216294B49AF00446F77 /* ClickAnimatedRoundedButton.swift in Sources */,
 				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
 				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
 				52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */,
+				52F1F214294B425F00446F77 /* TestScrollView.swift in Sources */,
 				52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */,
 				52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */,
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
 				522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
 				52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */,
-				52F1F20B294B2F7200446F77 /* AnimatedButton.swift in Sources */,
+				52F1F20B294B2F7200446F77 /* ClickAnimatedButton.swift in Sources */,
+				52F1F210294B3C8700446F77 /* UIElementsTests.swift in Sources */,
 				52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
