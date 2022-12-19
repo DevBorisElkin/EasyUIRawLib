@@ -39,10 +39,17 @@ class DelayedProgressBar: UIView {
         delayedProgressView.backgroundColor = selectedColorSet.delayedProgressColor
     }
     
+    // unnecessary layout subviews
     func showProgress(previousProgress: Double, currentProgress: Double) {
+        layoutSubviews()
         checkProgress(previousProgress)
         checkProgress(currentProgress)
-        instantProgressViewWidthConstraint.multiplier = CGFloat(currentProgress)
+        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        layoutSubviews()
+        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
+        UIView.animate(withDuration: progressAnimationTime) {
+            self.layoutSubviews()
+        }
     }
     
     private func checkProgress(_ progress: Double) {
@@ -57,7 +64,7 @@ class DelayedProgressBar: UIView {
         view.topAnchor.constraint(equalTo: topAnchor).isActive = true
         view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        let widthAnchor = view.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0)
+        let widthAnchor = view.widthAnchor.constraint(equalTo: widthAnchor)
         widthAnchor.isActive = true
         return (view, widthAnchor)
     }
