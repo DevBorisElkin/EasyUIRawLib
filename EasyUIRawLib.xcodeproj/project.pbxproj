@@ -81,6 +81,13 @@
 			path = EasyUICalculationHelpers;
 			sourceTree = "<group>";
 		};
+		524E355F29511CE4001FFDFA /* Example_3_DelayedProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Example_3_DelayedProgressBar;
+			sourceTree = "<group>";
+		};
 		52B6C9D7295111A30019AB10 /* DelayedProgressBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,7 +145,8 @@
 		52ED65D1293CF7B8004E80B7 /* PresentationScreens */ = {
 			isa = PBXGroup;
 			children = (
-				52F1F20E294B3C6700446F77 /* UIElementsTests */,
+				524E355F29511CE4001FFDFA /* Example_3_DelayedProgressBar */,
+				52F1F20E294B3C6700446F77 /* Example_2_AnimatedButton */,
 				52ED65D2293CF7CE004E80B7 /* Example_1_UITextViewScrollableFaded */,
 			);
 			path = PresentationScreens;
@@ -192,13 +200,13 @@
 			path = AnimatedButton;
 			sourceTree = "<group>";
 		};
-		52F1F20E294B3C6700446F77 /* UIElementsTests */ = {
+		52F1F20E294B3C6700446F77 /* Example_2_AnimatedButton */ = {
 			isa = PBXGroup;
 			children = (
 				52F1F20F294B3C8700446F77 /* UIElementsTests.swift */,
 				52F1F211294B3C9900446F77 /* UIElementsTests.storyboard */,
 			);
-			path = UIElementsTests;
+			path = Example_2_AnimatedButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
