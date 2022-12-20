@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h51-aB-ghX">
-                                <rect key="frame" x="128" y="184" width="138" height="35"/>
+                                <rect key="frame" x="127" y="173" width="138" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Show Progress"/>
@@ -26,20 +26,8 @@
                                     <action selector="setBarProgress" destination="Y6W-OH-hqX" eventType="touchUpInside" id="K1I-ro-4tT"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSr-DQ-15r" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
-                                <rect key="frame" x="31.666666666666657" y="122" width="330" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="8hy-n8-3EI"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fed-dk-b2G">
-                                <rect key="frame" x="116" y="242" width="161" height="35"/>
+                                <rect key="frame" x="116" y="231" width="161" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Set Progress Only"/>
@@ -48,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbs-Jh-OvM">
-                                <rect key="frame" x="78" y="285" width="237" height="35"/>
+                                <rect key="frame" x="78" y="265" width="237" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Animate Recorded Progress"/>
@@ -56,17 +44,35 @@
                                     <action selector="animateBarProgress" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mNr-aa-4FO"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSr-DQ-15r" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
+                                <rect key="frame" x="31.666666666666657" y="122" width="330" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="8hy-n8-3EI"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGH-1c-FqN" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
+                                <rect key="frame" x="31.666666666666657" y="341" width="330" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="39u-8U-95z"/>
+                                    <constraint firstAttribute="height" constant="20" id="CP8-Uq-doP"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vGH-1c-FqN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="282" id="F9Z-Xa-dXU"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Jek-d9-I5U"/>
+                            <constraint firstItem="vGH-1c-FqN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="WXK-jq-Wff"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="63" id="WvA-gu-iA6"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.839695" id="xkW-bl-gSz"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="delayedProgressBar" destination="LSr-DQ-15r" id="UR5-6P-UNP"/>
+                        <outlet property="secondDelayedProgressBar" destination="vGH-1c-FqN" id="ZRW-FQ-al3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

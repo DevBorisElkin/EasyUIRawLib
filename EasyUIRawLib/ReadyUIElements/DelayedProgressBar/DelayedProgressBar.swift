@@ -16,20 +16,36 @@ class DelayedProgressBar: UIView {
     private var delayedProgressViewWidthConstraint: NSLayoutConstraint!
     
     private var selectedColorSet: ColorSet!
-    private var progressAnimationTime: Double!
+    private var animationTime: Double = 0.35
     private var roundedCorners: Bool!
+    private var animationDelay: Double = 0
     
     private var recordedPriveousProgress: Double = 0
     private var recordedCurrentProgress: Double = 0
     
+    private static let defaultColorSet = ColorSet(backgroundColor: #colorLiteral(red: 0.1549557745, green: 0.2322508395, blue: 0.328158915, alpha: 1), instantProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1).withAlphaComponent(0.5), delayedProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1))
+    
     // todo add ability to set up via nib
     override func awakeFromNib() {}
     
-    func configure(colorSet: ColorSet, progressAnimationTime: Double, roundedCorners: Bool) {
+    /// Configures progress bar, but visuals still should be configured and animated. It can be done via setProgressAndAnimate() or consecutive call of setProgress() and then animate()
+    func configure(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0) {
         selectedColorSet = colorSet
-        self.progressAnimationTime = progressAnimationTime
         self.roundedCorners = roundedCorners
+        self.animationTime = animationTime
+        self.animationDelay = animationDelay
         commonInit()
+    }
+    /// Configures and sets progress bar visual progress, but still needs to be animated via animate()
+    func configure(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0, previousProgress: Double, currentProgress: Double) {
+        self.configure(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
+        self.setProgress(previousProgress: previousProgress, currentProgress: currentProgress)
+    }
+    
+    ///  Instantly animates progress bar after creation
+    func configureAndAnimate(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0, previousProgress: Double, currentProgress: Double) {
+        self.configure(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
+        self.setProgressAndAnimate(previousProgress: previousProgress, currentProgress: currentProgress)
     }
     
     private func commonInit() {
@@ -48,21 +64,20 @@ class DelayedProgressBar: UIView {
         
         if roundedCorners {
             DispatchQueue.main.async {
+                self.layer.cornerRadius = self.bounds.height / 2
                 self.instantProgressView.layer.cornerRadius = self.instantProgressView.bounds.height / 2
                 self.delayedProgressView.layer.cornerRadius = self.delayedProgressView.bounds.height / 2
             }
         }
     }
     
-    // unnecessary layout subviews
     func setProgressAndAnimate(previousProgress: Double, currentProgress: Double) {
-        layoutSubviews()
         checkProgresses([previousProgress, currentProgress])
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
         instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
         layoutSubviews()
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
-        UIView.animate(withDuration: progressAnimationTime) {
+        UIView.animate(withDuration: animationTime, delay: animationDelay) {
             self.layoutSubviews()
         }
     }
@@ -78,7 +93,7 @@ class DelayedProgressBar: UIView {
     func animate() {
         layoutSubviews()
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(recordedCurrentProgress)
-        UIView.animate(withDuration: progressAnimationTime) {
+        UIView.animate(withDuration: animationTime) {
             self.layoutSubviews()
         }
     }
