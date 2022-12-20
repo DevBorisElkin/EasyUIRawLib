@@ -10,6 +10,9 @@
 		522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */; };
 		524E356129511D62001FFDFA /* Example_3_DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E356029511D62001FFDFA /* Example_3_DelayedProgressBar.swift */; };
 		524E356329511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524E356229511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard */; };
+		524E35662951C643001FFDFA /* TopNotificationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E35652951C643001FFDFA /* TopNotificationMenu.swift */; };
+		524E35692951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E35682951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift */; };
+		524E356B2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524E356A2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard */; };
 		52B6C9D6295098B10019AB10 /* Thoughts and ideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */; };
 		52B6C9D9295112F90019AB10 /* DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
@@ -39,6 +42,9 @@
 		522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUICalculationHelpers.swift; sourceTree = "<group>"; };
 		524E356029511D62001FFDFA /* Example_3_DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_3_DelayedProgressBar.swift; sourceTree = "<group>"; };
 		524E356229511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_3_DelayedProgressBar.storyboard; sourceTree = "<group>"; };
+		524E35652951C643001FFDFA /* TopNotificationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNotificationMenu.swift; sourceTree = "<group>"; };
+		524E35682951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_4_TopNotificationMenu.swift; sourceTree = "<group>"; };
+		524E356A2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_4_TopNotificationMenu.storyboard; sourceTree = "<group>"; };
 		52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thoughts and ideas.swift"; sourceTree = "<group>"; };
 		52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedProgressBar.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +98,23 @@
 				524E356229511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard */,
 			);
 			path = Example_3_DelayedProgressBar;
+			sourceTree = "<group>";
+		};
+		524E35642951C5F5001FFDFA /* TopNotificationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				524E35652951C643001FFDFA /* TopNotificationMenu.swift */,
+			);
+			path = TopNotificationMenu;
+			sourceTree = "<group>";
+		};
+		524E35672951C89F001FFDFA /* Example_4_TopNotificationMenu */ = {
+			isa = PBXGroup;
+			children = (
+				524E35682951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift */,
+				524E356A2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard */,
+			);
+			path = Example_4_TopNotificationMenu;
 			sourceTree = "<group>";
 		};
 		52B6C9D7295111A30019AB10 /* DelayedProgressBar */ = {
@@ -154,6 +177,7 @@
 				52ED65D2293CF7CE004E80B7 /* Example_1_UITextViewScrollableFaded */,
 				52F1F20E294B3C6700446F77 /* Example_2_AnimatedButton */,
 				524E355F29511CE4001FFDFA /* Example_3_DelayedProgressBar */,
+				524E35672951C89F001FFDFA /* Example_4_TopNotificationMenu */,
 			);
 			path = PresentationScreens;
 			sourceTree = "<group>";
@@ -175,6 +199,7 @@
 				52ED65DA293CFA55004E80B7 /* FadedScrollView */,
 				52F1F209294B2F5C00446F77 /* AnimatedButton */,
 				52B6C9D7295111A30019AB10 /* DelayedProgressBar */,
+				524E35642951C5F5001FFDFA /* TopNotificationMenu */,
 			);
 			path = ReadyUIElements;
 			sourceTree = "<group>";
@@ -277,6 +302,7 @@
 				52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */,
 				52ED65D4293CF838004E80B7 /* Example_1_UIScrollViewFaded.storyboard in Resources */,
 				52ED65C4293CF46A004E80B7 /* Assets.xcassets in Resources */,
+				524E356B2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard in Resources */,
 				52ED65C2293CF466004E80B7 /* Main.storyboard in Resources */,
 				524E356329511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard in Resources */,
 				52F1F212294B3C9900446F77 /* UIElementsTests.storyboard in Resources */,
@@ -292,7 +318,9 @@
 			files = (
 				52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */,
 				52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */,
+				524E35692951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift in Sources */,
 				52F1F216294B49AF00446F77 /* ClickAnimatedRoundedButton.swift in Sources */,
+				524E35662951C643001FFDFA /* TopNotificationMenu.swift in Sources */,
 				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
 				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
 				52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */,

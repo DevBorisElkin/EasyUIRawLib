@@ -51,12 +51,16 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_3_DelayedProgressBar"/>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-pC-0Sj">
-                                                <rect key="frame" x="166" y="114" width="82.5" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G9w-pC-0Sj" customClass="RoutingButton" customModule="EasyUIRawLib" customModuleProvider="target">
+                                                <rect key="frame" x="93" y="114" width="228.5" height="38"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                <buttonConfiguration key="configuration" style="plain" title="4_TopNotificationMenu">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="storyboard" value="Example_4_TopNotificationMenu"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_4_TopNotificationMenu"/>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-5A-Rhg">
                                                 <rect key="frame" x="166" y="152" width="82.5" height="38"/>
