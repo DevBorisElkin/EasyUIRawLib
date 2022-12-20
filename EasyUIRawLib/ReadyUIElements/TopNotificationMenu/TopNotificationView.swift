@@ -1,5 +1,5 @@
 //
-//  TopNotificationMenu.swift
+//  TopNotificationView.swift
 //  EasyUIRawLib
 //
 //  Created by test on 20.12.2022.
@@ -31,13 +31,13 @@ class TopNotificationView: UIView {
         }
     }
     
-    /// notificationDisplayTime - if less then 0, the menu will never get closed
+    /// notificationDisplayTime - if less then 0, the notification view will never get closed
     public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) -> TopNotificationView {
         let notificationView = TopNotificationView()
         notificationView.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition, closingCompletion: closingCompletion)
         return notificationView
     }
-    /// notificationDisplayTime - if less then 0, the menu will never get closed
+    /// notificationDisplayTime - if less then 0, the notification view will never get closed
     func configure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) {
         self.openOnto = openOnto
         self.animationTime = animationTime
