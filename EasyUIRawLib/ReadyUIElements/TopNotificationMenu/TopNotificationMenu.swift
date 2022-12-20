@@ -28,6 +28,12 @@ class TopNotificationMenu: UIView {
         }
     }
     
+    public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0)) -> TopNotificationMenu {
+        let notificationMenu = TopNotificationMenu()
+        notificationMenu.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition)
+        return notificationMenu
+    }
+    
     func configure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0)) {
         self.openOnto = openOnto
         self.animationTime = animationTime
@@ -86,18 +92,10 @@ class TopNotificationMenu: UIView {
     }
     
     private func closeNotificationMenu() {
-        //print("closeNotificationMenu")
-        self.topConstraint.constant = -bounds.height
+        guard let openOnto = openOnto else { removeFromSuperview(); return }
         
-        //print("openOnto != nil: \(openOnto != nil)")
-        
-        guard let openOnto = openOnto else {
-            //print("Close instantly")
-            self.removeFromSuperview()
-            return
-        }
-        //print("Close smoothly")
-        
+        openOnto.layoutSubviews()
+        self.topConstraint.constant = -self.bounds.height
         UIView.animate(withDuration: animationTime) {
             openOnto.layoutSubviews()
         } completion: { [weak self] _ in
