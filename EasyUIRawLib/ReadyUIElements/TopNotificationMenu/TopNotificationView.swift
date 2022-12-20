@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TopNotificationMenu: UIView {
+class TopNotificationView: UIView {
     
     private weak var openOnto: UIView?
     
@@ -31,12 +31,13 @@ class TopNotificationMenu: UIView {
         }
     }
     
-    public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) -> TopNotificationMenu {
-        let notificationMenu = TopNotificationMenu()
-        notificationMenu.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition, closingCompletion: closingCompletion)
-        return notificationMenu
+    /// notificationDisplayTime - if less then 0, the menu will never get closed
+    public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) -> TopNotificationView {
+        let notificationView = TopNotificationView()
+        notificationView.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition, closingCompletion: closingCompletion)
+        return notificationView
     }
-    
+    /// notificationDisplayTime - if less then 0, the menu will never get closed
     func configure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) {
         self.openOnto = openOnto
         self.animationTime = animationTime
@@ -65,7 +66,7 @@ class TopNotificationMenu: UIView {
         case .onTop(offset: let offset):
             calculatedTopPosition = offset
         case .onTopOfStatusBar(offset: let offset):
-            calculatedTopPosition = TopNotificationMenu.statusBarHeight + offset
+            calculatedTopPosition = TopNotificationView.statusBarHeight + offset
         @unknown default: fatalError("Specify all enum cases of TopPosition!")
         }
         
@@ -78,23 +79,26 @@ class TopNotificationMenu: UIView {
     }
     
     private func startClosingCountdown() {
+        guard notificationDisplayTime >= 0 else {
+            return
+        }
         closingOperation = BlockOperation(block: { [weak self] in
             Thread.sleep(forTimeInterval: self?.notificationDisplayTime ?? 0)
             if let isCancelled = self?.closingOperation?.isCancelled, !isCancelled {
                 DispatchQueue.main.async {
-                    self?.closeNotificationMenu()
+                    self?.closeNotificationView()
                 }
             }
         })
         operationQueue.addOperation(closingOperation!)
     }
     
-    @objc func closeNotificationMenuManually() {
+    @objc func closeNotificationViewManually() {
         closingOperation?.cancel()
-        closeNotificationMenu()
+        closeNotificationView()
     }
     
-    private func closeNotificationMenu() {
+    private func closeNotificationView() {
         guard oneTimeClosingFlag else { return }
         oneTimeClosingFlag = false
         guard let openOnto = openOnto else { removeFromSuperview(); return }

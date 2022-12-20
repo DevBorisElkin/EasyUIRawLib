@@ -12,12 +12,12 @@ class Example_4_TopNotificationMenu: UIViewController {
     @IBOutlet weak var animationTimeField: UITextField!
     @IBOutlet weak var hangUpTimeField: UITextField!
     
-    weak var lastOpenedTopMenu: TopNotificationMenu?
+    weak var lastOpenedTopMenu: TopNotificationView?
     
     @IBAction func test_1_showSimpleNotification() {
         let contentView = createContentView()
         
-        let notificationMenu = TopNotificationMenu()
+        let notificationMenu = TopNotificationView()
         notificationMenu.configure(openOnto: self.view, contentView: contentView, animationTime: 0.3, notificationDisplayTime: 3, topPosition: .onTopOfStatusBar(offset: 0))
     }
     
@@ -28,7 +28,7 @@ class Example_4_TopNotificationMenu: UIViewController {
         let animationTime: Double = Double(animationTimeField.text ?? "0.1") ?? 0.1
         let hangUpTime: Double = Double(hangUpTimeField.text ?? "1") ?? 1
         
-        lastOpenedTopMenu = TopNotificationMenu.createAndConfigure(openOnto: self.view, contentView: contentView, animationTime: animationTime, notificationDisplayTime: hangUpTime, topPosition: .onTopOfStatusBar(offset: 0))
+        lastOpenedTopMenu = TopNotificationView.createAndConfigure(openOnto: self.view, contentView: contentView, animationTime: animationTime, notificationDisplayTime: hangUpTime, topPosition: .onTopOfStatusBar(offset: 0))
     }
     
     
@@ -58,6 +58,6 @@ class Example_4_TopNotificationMenu: UIViewController {
     
     @objc private func closeLastOpenedTopMenu(_ sender: UITapGestureRecognizer) {
         print("tapped on view, should start closing")
-        lastOpenedTopMenu?.closeNotificationMenuManually()
+        lastOpenedTopMenu?.closeNotificationViewManually()
     }
 }
