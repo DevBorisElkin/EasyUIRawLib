@@ -12,6 +12,7 @@ class Example_4_TopNotificationMenu: UIViewController {
     @IBOutlet weak var animationTimeField: UITextField!
     @IBOutlet weak var hangUpTimeField: UITextField!
     
+    weak var lastOpenedTopMenu: TopNotificationMenu?
     
     @IBAction func test_1_showSimpleNotification() {
         let contentView = createContentView()
@@ -21,12 +22,13 @@ class Example_4_TopNotificationMenu: UIViewController {
     }
     
     @IBAction func test_2_createConfigured() {
-        let contentView = createContentView()
+        //let contentView = createContentView()
+        let contentView = createContentViewWithClosingTouch()
         
         let animationTime: Double = Double(animationTimeField.text ?? "0.1") ?? 0.1
         let hangUpTime: Double = Double(hangUpTimeField.text ?? "1") ?? 1
         
-        _ = TopNotificationMenu.createAndConfigure(openOnto: self.view, contentView: contentView, animationTime: animationTime, notificationDisplayTime: hangUpTime, topPosition: .onTopOfStatusBar(offset: 0))
+        lastOpenedTopMenu = TopNotificationMenu.createAndConfigure(openOnto: self.view, contentView: contentView, animationTime: animationTime, notificationDisplayTime: hangUpTime, topPosition: .onTopOfStatusBar(offset: 0))
     }
     
     
@@ -38,5 +40,24 @@ class Example_4_TopNotificationMenu: UIViewController {
         contentView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         contentView.heightAnchor.constraint(equalToConstant: 120).isActive = true
         return contentView
+    }
+    
+    private func createContentViewWithClosingTouch() -> UIView {
+        let contentView = UIView()
+//        let contentView = ClickAnimatedView()
+//        contentView.awakeFromNib()
+        contentView.backgroundColor = .red
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(closeLastOpenedTopMenu))
+        contentView.addGestureRecognizer(tapGestureRecognizer)
+        return contentView
+    }
+    
+    @objc private func closeLastOpenedTopMenu(_ sender: UITapGestureRecognizer) {
+        print("tapped on view, should start closing")
+        lastOpenedTopMenu?.closeNotificationMenuManually()
     }
 }

@@ -14,11 +14,14 @@ class TopNotificationMenu: UIView {
     private var animationTime: Double = 0.25
     private var notificationDisplayTime: Double = 4
     private var topPosition: TopPosition = .onTop(offset: 0)
+    var closingCompletion: (()->Void)?
     
     private var topConstraint: NSLayoutConstraint!
     
-    let operationQueue = OperationQueue()
-    var closingOperation: BlockOperation?
+    private let operationQueue = OperationQueue()
+    private var closingOperation: BlockOperation?
+    
+    private var oneTimeClosingFlag = true
     
     static var statusBarHeight: CGFloat {
         if #available(iOS 13.0, *) {
@@ -28,16 +31,17 @@ class TopNotificationMenu: UIView {
         }
     }
     
-    public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0)) -> TopNotificationMenu {
+    public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) -> TopNotificationMenu {
         let notificationMenu = TopNotificationMenu()
-        notificationMenu.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition)
+        notificationMenu.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition, closingCompletion: closingCompletion)
         return notificationMenu
     }
     
-    func configure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0)) {
+    func configure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) {
         self.openOnto = openOnto
         self.animationTime = animationTime
         self.notificationDisplayTime = notificationDisplayTime
+        self.closingCompletion = closingCompletion
         
         translatesAutoresizingMaskIntoConstraints = false
         
@@ -86,12 +90,13 @@ class TopNotificationMenu: UIView {
     }
     
     @objc func closeNotificationMenuManually() {
-        print("closeNotificationMenuManually")
         closingOperation?.cancel()
         closeNotificationMenu()
     }
     
     private func closeNotificationMenu() {
+        guard oneTimeClosingFlag else { return }
+        oneTimeClosingFlag = false
         guard let openOnto = openOnto else { removeFromSuperview(); return }
         
         openOnto.layoutSubviews()
@@ -99,6 +104,7 @@ class TopNotificationMenu: UIView {
         UIView.animate(withDuration: animationTime) {
             openOnto.layoutSubviews()
         } completion: { [weak self] _ in
+            self?.closingCompletion?()
             self?.removeFromSuperview()
         }
     }
