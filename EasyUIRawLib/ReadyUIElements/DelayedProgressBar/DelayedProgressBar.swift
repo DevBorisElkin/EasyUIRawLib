@@ -62,6 +62,7 @@ class DelayedProgressBar: UIView {
         delayedProgressViewWidthConstraint = delayedProgressViewTuple.widthConstraint
         delayedProgressView.backgroundColor = selectedColorSet.delayedProgressColor
         
+        layoutSubviews()
         if roundedCorners {
             DispatchQueue.main.async {
                 self.layer.cornerRadius = self.bounds.height / 2

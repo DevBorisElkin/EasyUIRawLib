@@ -13,6 +13,8 @@
  3) bottom configurable down menu
  4) progress bar and delayed progress bar
  5) top menu that shows for a limited amount of time and then closed
+ 6) pagination (with swipes and code) collection view, e.g. greetings screen
+ 7) collection view with expandable height if switching to item with bigger height
  
  
  todo:

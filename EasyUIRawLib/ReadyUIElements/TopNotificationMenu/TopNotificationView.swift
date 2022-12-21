@@ -32,6 +32,7 @@ class TopNotificationView: UIView {
     }
     
     /// notificationDisplayTime - if less then 0, the notification view will never get closed
+    @discardableResult
     public static func createAndConfigure(openOnto: UIView, contentView: UIView, animationTime: Double = 0.25, notificationDisplayTime: Double = 4, topPosition: TopPosition = .onTop(offset: 0), closingCompletion: (()->Void)? = nil) -> TopNotificationView {
         let notificationView = TopNotificationView()
         notificationView.configure(openOnto: openOnto, contentView: contentView, animationTime: animationTime, notificationDisplayTime: notificationDisplayTime, topPosition: topPosition, closingCompletion: closingCompletion)
