@@ -16,6 +16,8 @@
  6) pagination (with swipes and code) collection view, e.g. greetings screen
  7) collection view with expandable height if switching to item with bigger height
  
+ 8) UITextView with insets zero
+ 
  
  todo:
  1) Fix linear/logarithmic interpolation setup in code (simplify with enums)
