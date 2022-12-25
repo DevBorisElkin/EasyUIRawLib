@@ -54,7 +54,11 @@ class Example_1_ScrollView: UIView {
         contentStackView.topAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.topAnchor).isActive = true
         contentStackView.heightAnchor.constraint(equalTo: fadedScrollView_1.contentLayoutGuide.heightAnchor).isActive = true
         
-        fadedScrollView_1.configureLogarithmic(startFadeSize: 0.3, endFadeSize: 0.1)
+//        fadedScrollView_1.configure(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .logarithmicFromEdges(base: 2))
+        
+        
+        
+        fadedScrollView_1.configure(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .linear, debugModeEnabled: false, debugProgressLogs: true)
     }
     
     var secondFadedScrollView: FadedScrollView?
@@ -78,7 +82,7 @@ class Example_1_ScrollView: UIView {
         
         //spawnContentForSecondScrollView()
         
-        fadedScrollView_1.configure(startFadeSizeMult: 0.25, endFadeSizeMult: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .linear, debugModeEnabled: true, debugProgressLogs: true)
+        fadedScrollView_1.configure(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2), debugModeEnabled: true, debugProgressLogs: true)
         
         
         
