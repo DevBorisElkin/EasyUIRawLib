@@ -19,6 +19,7 @@
 		52B000D529587B9300F0BE0C /* FadedUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D429587B9200F0BE0C /* FadedUICollectionView.swift */; };
 		52B000D729587BA900F0BE0C /* FadedUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D629587BA900F0BE0C /* FadedUITableView.swift */; };
 		52B000D929587BC100F0BE0C /* Tests--------.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D829587BC100F0BE0C /* Tests--------.swift */; };
+		52B000DB29587BFF00F0BE0C /* ProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000DA29587BFF00F0BE0C /* ProgressManager.swift */; };
 		52B6C9D6295098B10019AB10 /* Thoughts and ideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */; };
 		52B6C9D9295112F90019AB10 /* DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
@@ -57,6 +58,7 @@
 		52B000D429587B9200F0BE0C /* FadedUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedUICollectionView.swift; sourceTree = "<group>"; };
 		52B000D629587BA900F0BE0C /* FadedUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedUITableView.swift; sourceTree = "<group>"; };
 		52B000D829587BC100F0BE0C /* Tests--------.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tests--------.swift"; sourceTree = "<group>"; };
+		52B000DA29587BFF00F0BE0C /* ProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressManager.swift; sourceTree = "<group>"; };
 		52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thoughts and ideas.swift"; sourceTree = "<group>"; };
 		52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedProgressBar.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 				52B000D229587B7B00F0BE0C /* FadedUITextView.swift */,
 				52B000D429587B9200F0BE0C /* FadedUICollectionView.swift */,
 				52B000D629587BA900F0BE0C /* FadedUITableView.swift */,
+				52B000DA29587BFF00F0BE0C /* ProgressManager.swift */,
 				52B000D829587BC100F0BE0C /* Tests--------.swift */,
 				52B000CE295877B600F0BE0C /* TestTypes.swift */,
 				52B000D02958790F00F0BE0C /* FadedScrollPropertyWrapper.swift */,
@@ -350,6 +353,7 @@
 				52B000CF295877B600F0BE0C /* TestTypes.swift in Sources */,
 				522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
+				52B000DB29587BFF00F0BE0C /* ProgressManager.swift in Sources */,
 				52B000D929587BC100F0BE0C /* Tests--------.swift in Sources */,
 				52ED65D0293CF5F0004E80B7 /* RoutingButton.swift in Sources */,
 				52F1F20B294B2F7200446F77 /* ClickAnimatedButton.swift in Sources */,
