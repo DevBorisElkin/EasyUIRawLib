@@ -84,7 +84,7 @@ class Example_1_ScrollView: UIView {
         
 //        fadedScrollView_1.configure(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2))
         
-        fadedScrollView_1.configureDebug(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2), debugModeEnabled: false, debugProgressLogs: true, debugId: "ogurchick")
+        fadedScrollView_1.configureDebug(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2), debugModeEnabled: false, debugProgressLogs: false, debugId: "ogurchick")
         
         
         
