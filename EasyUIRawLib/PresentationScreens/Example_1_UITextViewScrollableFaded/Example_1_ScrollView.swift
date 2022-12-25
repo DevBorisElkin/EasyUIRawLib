@@ -56,9 +56,9 @@ class Example_1_ScrollView: UIView {
         
 //        fadedScrollView_1.configure(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .logarithmicFromEdges(base: 2))
         
+//        fadedScrollView_1.configure(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .linear, debugModeEnabled: false, debugProgressLogs: true)
         
-        
-        fadedScrollView_1.configure(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .linear, debugModeEnabled: false, debugProgressLogs: true)
+        fadedScrollView_1.configureDebug(startFadeSize: 0.3, endFadeSize: 0.1, interpolation: .logarithmicFromEdges(base: 10), debugModeEnabled: false, debugProgressLogs: false, debugId: "test_228")
     }
     
     var secondFadedScrollView: FadedScrollView?
@@ -82,8 +82,9 @@ class Example_1_ScrollView: UIView {
         
         //spawnContentForSecondScrollView()
         
-        fadedScrollView_1.configure(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2), debugModeEnabled: true, debugProgressLogs: true)
+//        fadedScrollView_1.configure(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2))
         
+        fadedScrollView_1.configureDebug(startFadeSize: 0.25, endFadeSize: 0.5, startProgressToHideFade: 0.05, endProgressToHideFade: 0.05, interpolation: .logarithmicFromEdges(base: 2), debugModeEnabled: false, debugProgressLogs: true, debugId: "ogurchick")
         
         
         

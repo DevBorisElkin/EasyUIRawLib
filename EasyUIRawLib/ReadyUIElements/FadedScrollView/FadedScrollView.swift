@@ -51,6 +51,7 @@ open class FadedScrollView: UIScrollView {
     private var startProgressToHideFade: CGFloat = 0.10
     private var endProgressToHideFade: CGFloat = 0.10
     
+    @IBInspectable var debugId: String = "no_debug_id"
     @IBInspectable var debugModeEnabled: Bool = false
     @IBInspectable var debugProgressLogs: Bool = false
     
@@ -86,10 +87,10 @@ open class FadedScrollView: UIScrollView {
     }
     
     func configure(startFadeSize: CGFloat, endFadeSize: CGFloat, interpolation: EasyUICalculationHelpers.FadeInterpolation) {
-        self.configure(isVertical: true, startFadeSize: startFadeSize, endFadeSize: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: interpolation, debugModeEnabled: false, debugProgressLogs: false)
+        self.configure(isVertical: true, startFadeSize: startFadeSize, endFadeSize: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: interpolation)
     }
     
-    func configure(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: EasyUICalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5), debugModeEnabled: Bool = false, debugProgressLogs: Bool = false) {
+    func configureDebug(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: EasyUICalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5), debugModeEnabled: Bool, debugProgressLogs: Bool, debugId: String) {
         self.isVertical = isVertical
         self.startFadeSize = startFadeSize
         self.endFadeSize = endFadeSize
@@ -98,6 +99,17 @@ open class FadedScrollView: UIScrollView {
         self.interpolation = interpolation
         self.debugModeEnabled = debugModeEnabled
         self.debugProgressLogs = debugProgressLogs
+        self.debugId = debugId
+        commonInit()
+    }
+    
+    func configure(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: EasyUICalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5)) {
+        self.isVertical = isVertical
+        self.startFadeSize = startFadeSize
+        self.endFadeSize = endFadeSize
+        self.startProgressToHideFade = startProgressToHideFade
+        self.endProgressToHideFade = endProgressToHideFade
+        self.interpolation = interpolation
         commonInit()
     }
     
@@ -106,7 +118,7 @@ open class FadedScrollView: UIScrollView {
         self.enableStartFade = startFadeSize > 0
         self.enableEndFade = endFadeSize > 0
         
-        progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled)
+        progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startProgressToHideFade, endFadeSizeMult: endProgressToHideFade)
         
         configureFadeInterpolation(injectedFromCode: interpolation)
@@ -181,11 +193,11 @@ open class FadedScrollView: UIScrollView {
     
     private func log(_ message: String) {
         guard debugModeEnabled else { return }
-        print(message)
+        print("[\(debugId)]: \(message)")
     }
     private func progressLog(_ message: String) {
         guard debugProgressLogs else { return }
-        print(message)
+        print("[\(debugId)]: \(message)")
     }
     
     open class ProgressManager {
@@ -193,9 +205,11 @@ open class FadedScrollView: UIScrollView {
         internal var startFadeSizeMult: CGFloat = 0
         internal var endFadeSizeMult: CGFloat = 0
         internal var debugModeEnabled: Bool
+        internal var debugId: String = "no_debug_id"
         
-        init(debugModeEnabled: Bool) {
+        init(debugModeEnabled: Bool, debugId: String) {
             self.debugModeEnabled = debugModeEnabled
+            self.debugId = debugId
         }
         
         // for debugging only
@@ -232,13 +246,13 @@ open class FadedScrollView: UIScrollView {
         
         internal func log(_ message: String) {
             guard debugModeEnabled else { return }
-            print(message)
+            print("[\(debugId)]: \(message)")
         }
     }
     
     class VerticalProgressManager: ProgressManager {
-        override init(debugModeEnabled: Bool) {
-            super.init(debugModeEnabled: debugModeEnabled)
+        override init(debugModeEnabled: Bool, debugId: String) {
+            super.init(debugModeEnabled: debugModeEnabled, debugId: debugId)
             log("VerticalProgressManager created")
         }
         override func scrollViewSize() -> CGFloat { parentScrollView.bounds.height }
@@ -247,8 +261,8 @@ open class FadedScrollView: UIScrollView {
     }
     
     class HorizontalProgressManager: ProgressManager {
-        override init(debugModeEnabled: Bool) {
-            super.init(debugModeEnabled: debugModeEnabled)
+        override init(debugModeEnabled: Bool, debugId: String) {
+            super.init(debugModeEnabled: debugModeEnabled, debugId: debugId)
             log("HorizontalProgressManager created")
         }
         override func scrollViewSize() -> CGFloat { parentScrollView.bounds.width }
