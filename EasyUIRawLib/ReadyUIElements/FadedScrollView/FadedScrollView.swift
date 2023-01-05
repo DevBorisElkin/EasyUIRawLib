@@ -2,20 +2,10 @@
 //  FadedScrollView.swift
 //  EasyUIRawLib
 //
-//  Created by test on 04.12.2022.
+//  Created by Boris Elkin on 25.12.2022.
 //
 
 import UIKit
-
-// todo fix logs at start
-// todo find a way to make other scrollable items the same
-// todo think how to add progressDelegate
-// 1) Notify on progress changed
-// 2) Notify on scrolled to start / end of scroll
-
-
-// END TASK: CocoaPods Library with open source code and test app on AppStore to test different Scrolls and
-// ability to create your own FadedScrollView with custom settings from within the User Interface to see how it works
 
 open class FadedScrollView: UIScrollView {
     @IBInspectable private var isVertical: Bool = true
@@ -34,7 +24,7 @@ open class FadedScrollView: UIScrollView {
     }
     
     /// min is 2. preferred max is 10, the smaller the value, the steeper the transition
-    @IBInspectable private var logarithmicBase: Double = 5
+    @IBInspectable private var logarithmicBase: Double = 10
     
     @IBInspectable private var linearInterpolation: Bool = true
     // further away from top/bottom borders - disappearing of content slows down
@@ -120,6 +110,9 @@ open class FadedScrollView: UIScrollView {
         
         progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startProgressToHideFade, endFadeSizeMult: endProgressToHideFade)
+        
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         
         configureFadeInterpolation(injectedFromCode: interpolation)
         configureFadeLayer()

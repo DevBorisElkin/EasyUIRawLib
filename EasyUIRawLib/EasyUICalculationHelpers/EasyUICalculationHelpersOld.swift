@@ -8,7 +8,7 @@
 import Foundation
 
 infix operator ~ : ComparisonPrecedence
-class EasyUICalculationHelpers {
+class EasyUICalculationHelpersOld {
     public static func remap(value: Double, from1: Double, to1: Double, from2: Double, to2: Double) -> Double {
         return (value - from1) / (to1 - from1) * (to2 - from2) + from2
     }
@@ -46,8 +46,8 @@ class EasyUICalculationHelpers {
         return log(val)/log(base)
     }
     
-    enum FadeInterpolation: Equatable {
-        case linear, logarithmicFromEdges(base: Double = 5), exponentialFromEdges(base: Double = 5)
+    public enum FadeInterpolation: Equatable {
+        case linear, logarithmicFromEdges(base: Double = 10), exponentialFromEdges(base: Double = 10)
         
         static func == (lhs: FadeInterpolation, rhs: FadeInterpolation) -> Bool {
             switch (lhs, rhs) {

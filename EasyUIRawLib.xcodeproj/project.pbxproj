@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */; };
+		522463012944EB32004F4E01 /* EasyUICalculationHelpersOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522463002944EB32004F4E01 /* EasyUICalculationHelpersOld.swift */; };
 		524E356129511D62001FFDFA /* Example_3_DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E356029511D62001FFDFA /* Example_3_DelayedProgressBar.swift */; };
 		524E356329511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524E356229511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard */; };
 		524E35662951C643001FFDFA /* TopNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E35652951C643001FFDFA /* TopNotificationView.swift */; };
@@ -20,6 +20,7 @@
 		52B000D729587BA900F0BE0C /* FadedUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D629587BA900F0BE0C /* FadedUITableView.swift */; };
 		52B000D929587BC100F0BE0C /* Tests--------.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D829587BC100F0BE0C /* Tests--------.swift */; };
 		52B000DB29587BFF00F0BE0C /* ProgressManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000DA29587BFF00F0BE0C /* ProgressManager.swift */; };
+		52B001182966E28900F0BE0C /* EasyUICalculationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B001172966E28900F0BE0C /* EasyUICalculationHelpers.swift */; };
 		52B6C9D6295098B10019AB10 /* Thoughts and ideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */; };
 		52B6C9D9295112F90019AB10 /* DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
@@ -46,7 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUICalculationHelpers.swift; sourceTree = "<group>"; };
+		522463002944EB32004F4E01 /* EasyUICalculationHelpersOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUICalculationHelpersOld.swift; sourceTree = "<group>"; };
 		524E356029511D62001FFDFA /* Example_3_DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_3_DelayedProgressBar.swift; sourceTree = "<group>"; };
 		524E356229511D77001FFDFA /* Example_3_DelayedProgressBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_3_DelayedProgressBar.storyboard; sourceTree = "<group>"; };
 		524E35652951C643001FFDFA /* TopNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNotificationView.swift; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		52B000D629587BA900F0BE0C /* FadedUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedUITableView.swift; sourceTree = "<group>"; };
 		52B000D829587BC100F0BE0C /* Tests--------.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tests--------.swift"; sourceTree = "<group>"; };
 		52B000DA29587BFF00F0BE0C /* ProgressManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressManager.swift; sourceTree = "<group>"; };
+		52B001172966E28900F0BE0C /* EasyUICalculationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyUICalculationHelpers.swift; sourceTree = "<group>"; };
 		52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thoughts and ideas.swift"; sourceTree = "<group>"; };
 		52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedProgressBar.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +102,7 @@
 		522462FF2944EB1B004F4E01 /* EasyUICalculationHelpers */ = {
 			isa = PBXGroup;
 			children = (
-				522463002944EB32004F4E01 /* EasyUICalculationHelpers.swift */,
+				522463002944EB32004F4E01 /* EasyUICalculationHelpersOld.swift */,
 			);
 			path = EasyUICalculationHelpers;
 			sourceTree = "<group>";
@@ -221,11 +223,12 @@
 		52ED65DA293CFA55004E80B7 /* FadedScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				52B000DA29587BFF00F0BE0C /* ProgressManager.swift */,
+				52B001172966E28900F0BE0C /* EasyUICalculationHelpers.swift */,
 				52ED65DB293CFA95004E80B7 /* FadedScrollView.swift */,
 				52B000D229587B7B00F0BE0C /* FadedUITextView.swift */,
 				52B000D429587B9200F0BE0C /* FadedUICollectionView.swift */,
 				52B000D629587BA900F0BE0C /* FadedUITableView.swift */,
-				52B000DA29587BFF00F0BE0C /* ProgressManager.swift */,
 				52B000D829587BC100F0BE0C /* Tests--------.swift */,
 				52B000CE295877B600F0BE0C /* TestTypes.swift */,
 				52B000D02958790F00F0BE0C /* FadedScrollPropertyWrapper.swift */,
@@ -345,13 +348,14 @@
 				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
 				52B000D12958790F00F0BE0C /* FadedScrollPropertyWrapper.swift in Sources */,
 				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
+				52B001182966E28900F0BE0C /* EasyUICalculationHelpers.swift in Sources */,
 				52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */,
 				52F1F214294B425F00446F77 /* TestScrollView.swift in Sources */,
 				52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */,
 				52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */,
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
 				52B000CF295877B600F0BE0C /* TestTypes.swift in Sources */,
-				522463012944EB32004F4E01 /* EasyUICalculationHelpers.swift in Sources */,
+				522463012944EB32004F4E01 /* EasyUICalculationHelpersOld.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
 				52B000DB29587BFF00F0BE0C /* ProgressManager.swift in Sources */,
 				52B000D929587BC100F0BE0C /* Tests--------.swift in Sources */,

@@ -2,7 +2,7 @@
 //  ProgressManager.swift
 //  EasyUIRawLib
 //
-//  Created by test on 25.12.2022.
+//  Created by Boris Elkin on 25.12.2022.
 //
 
 import UIKit

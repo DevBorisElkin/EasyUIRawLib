@@ -2,12 +2,12 @@
 //  FadedUITableView.swift
 //  EasyUIRawLib
 //
-//  Created by test on 25.12.2022.
+//  Created by Boris Elkin on 25.12.2022.
 //
 
 import UIKit
 
-class FadedUITableView: UITableView {
+open class FadedUITableView: UITableView {
     @IBInspectable private var isVertical: Bool = true
     
     @IBInspectable private var startFadeSizePercents: Int = 10 {
@@ -24,7 +24,7 @@ class FadedUITableView: UITableView {
     }
     
     /// min is 2. preferred max is 10, the smaller the value, the steeper the transition
-    @IBInspectable private var logarithmicBase: Double = 5
+    @IBInspectable private var logarithmicBase: Double = 10
     
     @IBInspectable private var linearInterpolation: Bool = true
     // further away from top/bottom borders - disappearing of content slows down
@@ -110,6 +110,9 @@ class FadedUITableView: UITableView {
         
         progressManager = isVertical ? VerticalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId) : HorizontalProgressManager(debugModeEnabled: debugModeEnabled, debugId: debugId)
         progressManager.configure(parentScrollView: self, startFadeSizeMult: startProgressToHideFade, endFadeSizeMult: endProgressToHideFade)
+        
+        showsHorizontalScrollIndicator = false
+        showsVerticalScrollIndicator = false
         
         configureFadeInterpolation(injectedFromCode: interpolation)
         configureFadeLayer()
