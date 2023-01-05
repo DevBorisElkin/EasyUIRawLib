@@ -32,7 +32,7 @@ open class FadedUICollectionView: UICollectionView {
     // further away from top/bottom borders - disappearing of content speeds up
     @IBInspectable private var exponentialFromEdges: Bool = false
     
-    private var interpolation: EasyUICalculationHelpers.FadeInterpolation!
+    private var interpolation: CalculationHelpers.FadeInterpolation!
     
     private var enableStartFade: Bool = true
     private var enableEndFade: Bool = true
@@ -76,11 +76,11 @@ open class FadedUICollectionView: UICollectionView {
         }
     }
     
-    func configure(startFadeSize: CGFloat, endFadeSize: CGFloat, interpolation: EasyUICalculationHelpers.FadeInterpolation) {
+    func configure(startFadeSize: CGFloat, endFadeSize: CGFloat, interpolation: CalculationHelpers.FadeInterpolation) {
         self.configure(isVertical: true, startFadeSize: startFadeSize, endFadeSize: endFadeSize, startProgressToHideFade: startFadeSize, endProgressToHideFade: endFadeSize, interpolation: interpolation)
     }
     
-    func configureDebug(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: EasyUICalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5), debugModeEnabled: Bool, debugProgressLogs: Bool, debugId: String) {
+    func configureDebug(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: CalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5), debugModeEnabled: Bool, debugProgressLogs: Bool, debugId: String) {
         self.isVertical = isVertical
         self.startFadeSize = startFadeSize
         self.endFadeSize = endFadeSize
@@ -93,7 +93,7 @@ open class FadedUICollectionView: UICollectionView {
         commonInit()
     }
     
-    func configure(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: EasyUICalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5)) {
+    func configure(isVertical: Bool = true, startFadeSize: CGFloat = 0.15, endFadeSize: CGFloat = 0.15, startProgressToHideFade: CGFloat = 0.15, endProgressToHideFade: CGFloat = 0.15, interpolation: CalculationHelpers.FadeInterpolation = .logarithmicFromEdges(base: 5)) {
         self.isVertical = isVertical
         self.startFadeSize = startFadeSize
         self.endFadeSize = endFadeSize
@@ -146,7 +146,7 @@ open class FadedUICollectionView: UICollectionView {
         manageGradientColorsOnScroll()
     }
     
-    private func configureFadeInterpolation(injectedFromCode: EasyUICalculationHelpers.FadeInterpolation?) {
+    private func configureFadeInterpolation(injectedFromCode: CalculationHelpers.FadeInterpolation?) {
         if injectedFromCode == nil {
             if !linearInterpolation && !logarithmicFromEdges && !exponentialFromEdges {
                 self.interpolation = .linear
@@ -165,14 +165,14 @@ open class FadedUICollectionView: UICollectionView {
             progressLog("progress: \(progress)")
             if enableStartFade {
                 let startAbsProgress = progressManager.calculateStartFadeProgress()
-                let startTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, interpolation: interpolation)
+                let startTransformedProgress = CalculationHelpers.logarythmicBasedDependence(progress: startAbsProgress, interpolation: interpolation)
                 colors[0] = opaqueColor.withAlphaComponent(startTransformedProgress).cgColor
                 progressLog("startAbsProgress: \(startAbsProgress)")
                 progressLog("startTransformedProgress: \(startTransformedProgress)")
             }
             if enableEndFade {
                 let endAbsProgress = progressManager.calculateEndFadeProgress()
-                let endTransformedProgress = EasyUICalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, interpolation: interpolation)
+                let endTransformedProgress = CalculationHelpers.logarythmicBasedDependence(progress: endAbsProgress, interpolation: interpolation)
                 colors[3] = opaqueColor.withAlphaComponent(endTransformedProgress).cgColor
                 progressLog("endAbsProgress: \(endAbsProgress)")
                 progressLog("endTransformedProgress: \(endTransformedProgress)")
