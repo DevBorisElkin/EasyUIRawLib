@@ -21,6 +21,10 @@ class ScalableWrapperView: UIView {
         case add(at: Int? = nil)
         case arrange(at: Int? = nil)
     }
+    public enum Axis {
+        case horizontal
+        case vertical
+    }
     
     private func setWrapperConstraints() {
         mainParentToLayoutSubviews?.layoutIfNeeded()
@@ -112,7 +116,7 @@ class ScalableWrapperView: UIView {
     }
     
     /// instantly folds the view by specified axis and then calls 'changeSize' with 'endSize' value. By default, 'endSize' is 1. 'Folded' state always has implicit 'startSize' as 0
-    public func foldAndThenUnfoldSize(endSize: CGFloat = 1, axis: UIAxis, animationTime: Double = 0, zPositionChange: CGFloat = 0, completion: (()->Void)? = nil) {
+    public func foldAndThenUnfoldSize(endSize: CGFloat = 1, axis: Axis, animationTime: Double = 0, zPositionChange: CGFloat = 0, completion: (()->Void)? = nil) {
         switch axis {
         case .horizontal:
             wrapperWidth.constant = 0
@@ -128,7 +132,7 @@ class ScalableWrapperView: UIView {
     }
     
     /// to fold or unfold the view by specified axis, in completion recommended to remove the view from superview if you're intended to fold it
-    public func changeSize(endSize: CGFloat, axis: UIAxis, animationTime: Double = 0, zPositionChange: CGFloat = 0, completion: (()->Void)? = nil) {
+    public func changeSize(endSize: CGFloat, axis: Axis, animationTime: Double = 0, zPositionChange: CGFloat = 0, completion: (()->Void)? = nil) {
         guard let subview = subview else { print("Error: ScalableWrapperView.NoSubview"); return }
         layer.zPosition = layer.zPosition + zPositionChange
         
