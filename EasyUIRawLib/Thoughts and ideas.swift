@@ -18,6 +18,9 @@
  
  8) UITextView with insets zero
  
+ 9) Cozy scale mults and dimensions
+ // https://www.ios-resolution.com/
+ 
  
  todo:
  1) Fix linear/logarithmic interpolation setup in code (simplify with enums)

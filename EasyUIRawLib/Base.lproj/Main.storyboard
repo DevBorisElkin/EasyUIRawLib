@@ -62,12 +62,16 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_4_TopNotificationMenu"/>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-5A-Rhg">
-                                                <rect key="frame" x="166" y="152" width="82.5" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcg-5A-Rhg" customClass="RoutingButton" customModule="EasyUIRawLib" customModuleProvider="target">
+                                                <rect key="frame" x="29.5" y="152" width="355" height="38"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                <buttonConfiguration key="configuration" style="plain" title="Example_5_ScalingDownByTransform">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="storyboard" value="Example_5_ScalingDownByTransform"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_5_ScalingDownByTransform"/>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JbI-DR-sI0">
                                                 <rect key="frame" x="166" y="190" width="82.5" height="38"/>

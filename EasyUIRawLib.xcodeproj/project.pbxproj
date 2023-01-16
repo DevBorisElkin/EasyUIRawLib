@@ -23,6 +23,9 @@
 		52B001182966E28900F0BE0C /* CalculationHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B001172966E28900F0BE0C /* CalculationHelpers.swift */; };
 		52B6C9D6295098B10019AB10 /* Thoughts and ideas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */; };
 		52B6C9D9295112F90019AB10 /* DelayedProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */; };
+		52C708752975176F00A43113 /* Example_5_ScalingDownByTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C708742975176F00A43113 /* Example_5_ScalingDownByTransform.swift */; };
+		52C708772975178200A43113 /* Example_5_ScalingDownByTransform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C708762975178200A43113 /* Example_5_ScalingDownByTransform.storyboard */; };
+		52C708792975215D00A43113 /* ScalableWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C708782975215D00A43113 /* ScalableWrapperView.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
 		52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BC293CF466004E80B7 /* SceneDelegate.swift */; };
 		52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BE293CF466004E80B7 /* ViewController.swift */; };
@@ -63,6 +66,9 @@
 		52B001172966E28900F0BE0C /* CalculationHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationHelpers.swift; sourceTree = "<group>"; };
 		52B6C9D5295098B10019AB10 /* Thoughts and ideas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thoughts and ideas.swift"; sourceTree = "<group>"; };
 		52B6C9D8295112F90019AB10 /* DelayedProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedProgressBar.swift; sourceTree = "<group>"; };
+		52C708742975176F00A43113 /* Example_5_ScalingDownByTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_5_ScalingDownByTransform.swift; sourceTree = "<group>"; };
+		52C708762975178200A43113 /* Example_5_ScalingDownByTransform.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_5_ScalingDownByTransform.storyboard; sourceTree = "<group>"; };
+		52C708782975215D00A43113 /* ScalableWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableWrapperView.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ED65BA293CF466004E80B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52ED65BC293CF466004E80B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +147,16 @@
 			path = DelayedProgressBar;
 			sourceTree = "<group>";
 		};
+		52C708732975174F00A43113 /* Example_5_ScalingDownByTransform */ = {
+			isa = PBXGroup;
+			children = (
+				52C708742975176F00A43113 /* Example_5_ScalingDownByTransform.swift */,
+				52C708762975178200A43113 /* Example_5_ScalingDownByTransform.storyboard */,
+				52C708782975215D00A43113 /* ScalableWrapperView.swift */,
+			);
+			path = Example_5_ScalingDownByTransform;
+			sourceTree = "<group>";
+		};
 		52ED65AE293CF466004E80B7 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +210,7 @@
 				52F1F20E294B3C6700446F77 /* Example_2_AnimatedButton */,
 				524E355F29511CE4001FFDFA /* Example_3_DelayedProgressBar */,
 				524E35672951C89F001FFDFA /* Example_4_TopNotificationMenu */,
+				52C708732975174F00A43113 /* Example_5_ScalingDownByTransform */,
 			);
 			path = PresentationScreens;
 			sourceTree = "<group>";
@@ -322,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52C708772975178200A43113 /* Example_5_ScalingDownByTransform.storyboard in Resources */,
 				52ED65C7293CF46A004E80B7 /* LaunchScreen.storyboard in Resources */,
 				52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */,
 				52ED65D4293CF838004E80B7 /* Example_1_UIScrollViewFaded.storyboard in Resources */,
@@ -356,6 +374,7 @@
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
 				52B000CF295877B600F0BE0C /* TestTypes.swift in Sources */,
 				522463012944EB32004F4E01 /* EasyUICalculationHelpersOld.swift in Sources */,
+				52C708792975215D00A43113 /* ScalableWrapperView.swift in Sources */,
 				52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */,
 				52B000DB29587BFF00F0BE0C /* ProgressManager.swift in Sources */,
 				52B000D929587BC100F0BE0C /* Tests--------.swift in Sources */,
@@ -368,6 +387,7 @@
 				52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */,
 				524E356129511D62001FFDFA /* Example_3_DelayedProgressBar.swift in Sources */,
 				52B000D729587BA900F0BE0C /* FadedUITableView.swift in Sources */,
+				52C708752975176F00A43113 /* Example_5_ScalingDownByTransform.swift in Sources */,
 				52B6C9D9295112F90019AB10 /* DelayedProgressBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
