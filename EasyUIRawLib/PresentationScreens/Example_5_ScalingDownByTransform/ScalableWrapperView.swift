@@ -136,7 +136,13 @@ class ScalableWrapperView: UIView {
         guard let subview = subview else { print("Error: ScalableWrapperView.NoSubview"); return }
         layer.zPosition = layer.zPosition + zPositionChange
         
-        wrapperHeight.constant = subviewNaturalHeight * endSize
+        switch axis {
+        case .horizontal:
+            wrapperWidth.constant = subviewNaturalHeight * endSize
+        case .vertical:
+            wrapperHeight.constant = subviewNaturalHeight * endSize
+        }
+        
         guard animationTime > 0 else { return }
         
         UIView.animate(withDuration: animationTime, animations: {
