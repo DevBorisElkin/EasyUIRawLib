@@ -27,12 +27,14 @@ class Example_5_ScalingDownByTransform: UIViewController {
         rowView.backgroundColor = .red
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            scalableWrapperView.configure(flexibleSubview: rowView, parent: self.stackToInsertInto, emplacement: .arrange(at: 1), mainParentToLayoutSubviews: self.view)
-            scalableWrapperView.squashAndChangeScale(scale: 1, animationTime: 0.5, zPositionChange: -10)
+            scalableWrapperView.configure(animatedSubview: rowView, parent: self.stackToInsertInto, placement: .arrange(at: 1), mainParentToLayoutSubviews: self.view)
+            scalableWrapperView.changeSizeWithFoldingAnimation(newSize: .one, axis: .vertical, animationTime: 0.5, mainAnimationDelay: 0.2)
+//            scalableWrapperView.squashAndChangeScale(scale: 1, animationTime: 0.5, zPositionChange: -10)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
                 //scalableWrapperView.configure(flexibleSubview: rowView, parent: self.stackToInsertInto, emplacement: .arrange(at: 1), mainParentToLayoutSubviews: self.view)
-                scalableWrapperView.squashHeight(scale: 0.01, animationTime: 0.5)
+//                scalableWrapperView.squashHeight(scale: 0.01, animationTime: 0.5)
+                scalableWrapperView.changeSizeWithFoldingAnimation(newSize: .zero, axis: .vertical, animationTime: 0.5, mainAnimationDelay: 0.2)
             }
         }
         

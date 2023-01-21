@@ -172,6 +172,54 @@
                                     <constraint firstAttribute="width" constant="43" id="zfo-X6-ZHD"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Хиромантия это круто" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="y5V-pU-vza">
+                                <rect key="frame" x="30" y="606" width="90" height="36.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="b8s-vo-9vb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Хироман" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="H44-Rr-gT5">
+                                <rect key="frame" x="151" y="606" width="90" height="20.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="hEP-eQ-7ld"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Хиромантия это увлекательная вещь и вообще как вы живете без нее?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAF-yb-Tny">
+                                <rect key="frame" x="264" y="606" width="90" height="162.33333333333337"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="9bR-CB-N68"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QKM-eU-hah">
+                                <rect key="frame" x="29" y="694" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.20784313725490194" green="0.4823529411764706" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Emb-fO-DpE">
+                                <rect key="frame" x="93" y="694" width="75" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ln-Jl-Gw4">
+                                <rect key="frame" x="45" y="716.66666666666663" width="120" height="74.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="O13-Mz-kqU"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button with long text bla bla bla"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -181,12 +229,20 @@
                             <constraint firstItem="xPA-n8-vyG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="G2W-9f-Nn1"/>
                             <constraint firstItem="O7u-u7-lWy" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="109" id="Gr2-w7-Aop"/>
                             <constraint firstItem="jG7-9X-PU2" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="34" id="HNW-2i-iyh"/>
+                            <constraint firstItem="y5V-pU-vza" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="30" id="JH1-y3-8Bs"/>
                             <constraint firstItem="6Wt-IA-X7X" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.85" id="V6z-Tn-1fN"/>
+                            <constraint firstItem="tAF-yb-Tny" firstAttribute="top" secondItem="y5V-pU-vza" secondAttribute="top" id="WH2-YB-tKA"/>
+                            <constraint firstItem="H44-Rr-gT5" firstAttribute="leading" secondItem="y5V-pU-vza" secondAttribute="trailing" constant="31" id="Wy1-Rx-BcI"/>
                             <constraint firstItem="jG7-9X-PU2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="29" id="Yox-35-oj1"/>
+                            <constraint firstItem="H44-Rr-gT5" firstAttribute="top" secondItem="y5V-pU-vza" secondAttribute="top" id="d37-FI-E8f"/>
                             <constraint firstItem="O7u-u7-lWy" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="34" id="dXQ-7k-VW4"/>
                             <constraint firstItem="wLs-vQ-yxd" firstAttribute="top" secondItem="O7u-u7-lWy" secondAttribute="bottom" constant="21" id="dXm-AW-zzA"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="tAF-yb-Tny" secondAttribute="trailing" constant="39" id="iHz-fk-9F4"/>
                             <constraint firstItem="6Wt-IA-X7X" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" id="jOc-cJ-c3l"/>
+                            <constraint firstItem="y5V-pU-vza" firstAttribute="top" secondItem="6Wt-IA-X7X" secondAttribute="bottom" constant="88.333333333333258" id="nx3-4Y-b4S"/>
+                            <constraint firstItem="1Ln-Jl-Gw4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="45" id="rwz-us-elD"/>
                             <constraint firstItem="wLs-vQ-yxd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="109" id="uhS-9b-4hy"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="1Ln-Jl-Gw4" secondAttribute="bottom" constant="27" id="yme-6l-SDo"/>
                         </constraints>
                     </view>
                     <connections>
