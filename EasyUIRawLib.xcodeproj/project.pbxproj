@@ -27,6 +27,9 @@
 		52C708772975178200A43113 /* Example_5_ScalingDownByTransform.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52C708762975178200A43113 /* Example_5_ScalingDownByTransform.storyboard */; };
 		52C708792975215D00A43113 /* ScalableWrapperViewIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C708782975215D00A43113 /* ScalableWrapperViewIB.swift */; };
 		52C7087B2975435500A43113 /* ScalableWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C7087A2975435500A43113 /* ScalableWrapperView.swift */; };
+		52E0B5C72988B35E0084CB2E /* Example_6_CooldownClickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0B5C62988B35E0084CB2E /* Example_6_CooldownClickButton.swift */; };
+		52E0B5C92988B3740084CB2E /* Example_6_CooldownClickButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E0B5C82988B3740084CB2E /* Example_6_CooldownClickButton.storyboard */; };
+		52E0B5CB2988B3F20084CB2E /* CooldownClickButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E0B5CA2988B3F20084CB2E /* CooldownClickButton.swift */; };
 		52ED65BB293CF466004E80B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BA293CF466004E80B7 /* AppDelegate.swift */; };
 		52ED65BD293CF466004E80B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BC293CF466004E80B7 /* SceneDelegate.swift */; };
 		52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52ED65BE293CF466004E80B7 /* ViewController.swift */; };
@@ -71,6 +74,9 @@
 		52C708762975178200A43113 /* Example_5_ScalingDownByTransform.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_5_ScalingDownByTransform.storyboard; sourceTree = "<group>"; };
 		52C708782975215D00A43113 /* ScalableWrapperViewIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableWrapperViewIB.swift; sourceTree = "<group>"; };
 		52C7087A2975435500A43113 /* ScalableWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableWrapperView.swift; sourceTree = "<group>"; };
+		52E0B5C62988B35E0084CB2E /* Example_6_CooldownClickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_6_CooldownClickButton.swift; sourceTree = "<group>"; };
+		52E0B5C82988B3740084CB2E /* Example_6_CooldownClickButton.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_6_CooldownClickButton.storyboard; sourceTree = "<group>"; };
+		52E0B5CA2988B3F20084CB2E /* CooldownClickButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooldownClickButton.swift; sourceTree = "<group>"; };
 		52ED65B7293CF466004E80B7 /* EasyUIRawLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyUIRawLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52ED65BA293CF466004E80B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52ED65BC293CF466004E80B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +166,16 @@
 			path = Example_5_ScalingDownByTransform;
 			sourceTree = "<group>";
 		};
+		52E0B5C52988B3010084CB2E /* Example_6_CooldownClickButton */ = {
+			isa = PBXGroup;
+			children = (
+				52E0B5C62988B35E0084CB2E /* Example_6_CooldownClickButton.swift */,
+				52E0B5C82988B3740084CB2E /* Example_6_CooldownClickButton.storyboard */,
+				52E0B5CA2988B3F20084CB2E /* CooldownClickButton.swift */,
+			);
+			path = Example_6_CooldownClickButton;
+			sourceTree = "<group>";
+		};
 		52ED65AE293CF466004E80B7 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +230,7 @@
 				524E355F29511CE4001FFDFA /* Example_3_DelayedProgressBar */,
 				524E35672951C89F001FFDFA /* Example_4_TopNotificationMenu */,
 				52C708732975174F00A43113 /* Example_5_ScalingDownByTransform */,
+				52E0B5C52988B3010084CB2E /* Example_6_CooldownClickButton */,
 			);
 			path = PresentationScreens;
 			sourceTree = "<group>";
@@ -342,6 +359,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E0B5C92988B3740084CB2E /* Example_6_CooldownClickButton.storyboard in Resources */,
 				52C708772975178200A43113 /* Example_5_ScalingDownByTransform.storyboard in Resources */,
 				52ED65C7293CF46A004E80B7 /* LaunchScreen.storyboard in Resources */,
 				52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */,
@@ -363,6 +381,8 @@
 			files = (
 				52ED65BF293CF466004E80B7 /* ViewController.swift in Sources */,
 				52ED65D8293CF8F5004E80B7 /* Extensions.swift in Sources */,
+				52E0B5C72988B35E0084CB2E /* Example_6_CooldownClickButton.swift in Sources */,
+				52E0B5CB2988B3F20084CB2E /* CooldownClickButton.swift in Sources */,
 				524E35692951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift in Sources */,
 				52F1F216294B49AF00446F77 /* ClickAnimatedRoundedButton.swift in Sources */,
 				524E35662951C643001FFDFA /* TopNotificationView.swift in Sources */,
