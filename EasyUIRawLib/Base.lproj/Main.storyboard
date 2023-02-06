@@ -84,12 +84,16 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_6_CooldownClickButton"/>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmh-eq-Qbd">
-                                                <rect key="frame" x="166" y="228" width="82.5" height="38"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmh-eq-Qbd" customClass="RoutingButton" customModule="EasyUIRawLib" customModuleProvider="target">
+                                                <rect key="frame" x="31.5" y="228" width="351" height="38"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                <buttonConfiguration key="configuration" style="plain" title="Example_7_ExpandedViewAndButton">
                                                     <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                 </buttonConfiguration>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="storyboard" value="Example_7_ExpandedViewAndButton"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="controllerId" value="Example_7_ExpandedViewAndButton"/>
+                                                </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9w-hl-IxY">
                                                 <rect key="frame" x="166" y="266" width="82.5" height="38"/>

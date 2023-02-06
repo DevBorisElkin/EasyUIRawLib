@@ -13,6 +13,9 @@
 		524E35662951C643001FFDFA /* TopNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E35652951C643001FFDFA /* TopNotificationView.swift */; };
 		524E35692951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524E35682951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift */; };
 		524E356B2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524E356A2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard */; };
+		52A3CBED299182A8000A6090 /* ExpandedViewAndButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A3CBEC299182A8000A6090 /* ExpandedViewAndButton.swift */; };
+		52A3CBEF299182FA000A6090 /* Example_7_ExpandedViewAndButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A3CBEE299182FA000A6090 /* Example_7_ExpandedViewAndButton.swift */; };
+		52A3CBF12991830D000A6090 /* Example_7_ExpandedViewAndButton.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A3CBF02991830D000A6090 /* Example_7_ExpandedViewAndButton.storyboard */; };
 		52B000CF295877B600F0BE0C /* TestTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000CE295877B600F0BE0C /* TestTypes.swift */; };
 		52B000D12958790F00F0BE0C /* FadedScrollPropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D02958790F00F0BE0C /* FadedScrollPropertyWrapper.swift */; };
 		52B000D329587B7B00F0BE0C /* FadedUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B000D229587B7B00F0BE0C /* FadedUITextView.swift */; };
@@ -60,6 +63,9 @@
 		524E35652951C643001FFDFA /* TopNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNotificationView.swift; sourceTree = "<group>"; };
 		524E35682951CA1B001FFDFA /* Example_4_TopNotificationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_4_TopNotificationMenu.swift; sourceTree = "<group>"; };
 		524E356A2951CA4C001FFDFA /* Example_4_TopNotificationMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_4_TopNotificationMenu.storyboard; sourceTree = "<group>"; };
+		52A3CBEC299182A8000A6090 /* ExpandedViewAndButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedViewAndButton.swift; sourceTree = "<group>"; };
+		52A3CBEE299182FA000A6090 /* Example_7_ExpandedViewAndButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Example_7_ExpandedViewAndButton.swift; sourceTree = "<group>"; };
+		52A3CBF02991830D000A6090 /* Example_7_ExpandedViewAndButton.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Example_7_ExpandedViewAndButton.storyboard; sourceTree = "<group>"; };
 		52B000CE295877B600F0BE0C /* TestTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTypes.swift; sourceTree = "<group>"; };
 		52B000D02958790F00F0BE0C /* FadedScrollPropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedScrollPropertyWrapper.swift; sourceTree = "<group>"; };
 		52B000D229587B7B00F0BE0C /* FadedUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadedUITextView.swift; sourceTree = "<group>"; };
@@ -147,6 +153,16 @@
 			path = Example_4_TopNotificationMenu;
 			sourceTree = "<group>";
 		};
+		52A3CBEB29918289000A6090 /* Example_7_ExpandedViewAndButton */ = {
+			isa = PBXGroup;
+			children = (
+				52A3CBEC299182A8000A6090 /* ExpandedViewAndButton.swift */,
+				52A3CBEE299182FA000A6090 /* Example_7_ExpandedViewAndButton.swift */,
+				52A3CBF02991830D000A6090 /* Example_7_ExpandedViewAndButton.storyboard */,
+			);
+			path = Example_7_ExpandedViewAndButton;
+			sourceTree = "<group>";
+		};
 		52B6C9D7295111A30019AB10 /* DelayedProgressBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +247,7 @@
 				524E35672951C89F001FFDFA /* Example_4_TopNotificationMenu */,
 				52C708732975174F00A43113 /* Example_5_ScalingDownByTransform */,
 				52E0B5C52988B3010084CB2E /* Example_6_CooldownClickButton */,
+				52A3CBEB29918289000A6090 /* Example_7_ExpandedViewAndButton */,
 			);
 			path = PresentationScreens;
 			sourceTree = "<group>";
@@ -362,6 +379,7 @@
 				52E0B5C92988B3740084CB2E /* Example_6_CooldownClickButton.storyboard in Resources */,
 				52C708772975178200A43113 /* Example_5_ScalingDownByTransform.storyboard in Resources */,
 				52ED65C7293CF46A004E80B7 /* LaunchScreen.storyboard in Resources */,
+				52A3CBF12991830D000A6090 /* Example_7_ExpandedViewAndButton.storyboard in Resources */,
 				52ED65E3293D4CA5004E80B7 /* Example_1_ScrollView.xib in Resources */,
 				52ED65D4293CF838004E80B7 /* Example_1_UIScrollViewFaded.storyboard in Resources */,
 				52ED65C4293CF46A004E80B7 /* Assets.xcassets in Resources */,
@@ -387,6 +405,7 @@
 				52F1F216294B49AF00446F77 /* ClickAnimatedRoundedButton.swift in Sources */,
 				524E35662951C643001FFDFA /* TopNotificationView.swift in Sources */,
 				52ED65DF293CFC81004E80B7 /* ReadyElementsExtensions.swift in Sources */,
+				52A3CBED299182A8000A6090 /* ExpandedViewAndButton.swift in Sources */,
 				52B000D12958790F00F0BE0C /* FadedScrollPropertyWrapper.swift in Sources */,
 				52C7087B2975435500A43113 /* ScalableWrapperView.swift in Sources */,
 				52ED65DC293CFA95004E80B7 /* FadedScrollView.swift in Sources */,
@@ -394,6 +413,7 @@
 				52F1F20D294B375900446F77 /* ClickAnimatedView.swift in Sources */,
 				52F1F214294B425F00446F77 /* TestScrollView.swift in Sources */,
 				52ED65E5293D4D00004E80B7 /* Example_1_ScrollView.swift in Sources */,
+				52A3CBEF299182FA000A6090 /* Example_7_ExpandedViewAndButton.swift in Sources */,
 				52ED65E1293D4B0B004E80B7 /* ScrollViewFactory.swift in Sources */,
 				52ED65D6293CF841004E80B7 /* Example_1_UIScrollViewFaded.swift in Sources */,
 				52B000CF295877B600F0BE0C /* TestTypes.swift in Sources */,
