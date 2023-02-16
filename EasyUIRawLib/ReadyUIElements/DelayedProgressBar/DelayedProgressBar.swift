@@ -131,4 +131,41 @@ class DelayedProgressBar: UIView {
         var instantProgressColor: UIColor
         var delayedProgressColor: UIColor
     }
+    
+    // MARK: SetUp for glowing new progres
+    // TODO: write logic
+    func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true) {
+        selectedColorSet = colorSet
+        self.roundedCorners = roundedCorners
+        commonInit()
+    }
+    
+    enum ProgressViewType { case oldProgress, newProgress }
+    
+    private func createAndConstraintProgressView(progressViewType: ProgressViewType) -> (view: UIView, widthConstraint: NSLayoutConstraint) {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        view.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        view.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        switch progressViewType {
+        case .oldProgress:
+            view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
+            widthAnchor.isActive = true
+            // todo return
+        case .newProgress:
+            // todo set leading to prev view
+            view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            
+            // todo return
+            let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
+            widthAnchor.isActive = true
+        }
+        
+        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        
+        return (view, widthAnchor)
+    }
 }
