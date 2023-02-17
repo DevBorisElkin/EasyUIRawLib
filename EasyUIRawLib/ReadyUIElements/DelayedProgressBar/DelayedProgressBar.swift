@@ -134,10 +134,42 @@ class DelayedProgressBar: UIView {
     
     // MARK: SetUp for glowing new progres
     // TODO: write logic
-    func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true) {
+    func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double) {
         selectedColorSet = colorSet
         self.roundedCorners = roundedCorners
-        commonInit()
+        
+        // initialize values
+        layer.masksToBounds = true
+        backgroundColor = selectedColorSet.backgroundColor
+        
+        let instantProgressViewTuple = createAndConstraintProgressView(progressViewType: .oldProgress)
+        instantProgressView = instantProgressViewTuple.view
+        instantProgressViewWidthConstraint = instantProgressViewTuple.widthConstraint
+        instantProgressView.backgroundColor = selectedColorSet.instantProgressColor
+        
+        let delayedProgressViewTuple = createAndConstraintProgressView(progressViewType: .newProgress)
+        delayedProgressView = delayedProgressViewTuple.view
+        delayedProgressViewWidthConstraint = delayedProgressViewTuple.widthConstraint
+        delayedProgressView.backgroundColor = selectedColorSet.delayedProgressColor
+        
+        layoutSubviews()
+        if roundedCorners {
+            DispatchQueue.main.async {
+                self.layer.cornerRadius = self.bounds.height / 2
+                self.instantProgressView.layer.cornerRadius = self.instantProgressView.bounds.height / 2
+                self.delayedProgressView.layer.cornerRadius = self.delayedProgressView.bounds.height / 2
+            }
+        }
+        
+        setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
+    }
+    
+    func setGlowingProgress(previousProgress: Double, currentProgress: Double) {
+        checkProgresses([previousProgress, currentProgress])
+        recordedPriveousProgress = previousProgress
+        recordedCurrentProgress = currentProgress
+        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
+        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress - previousProgress)
     }
     
     enum ProgressViewType { case oldProgress, newProgress }
@@ -152,19 +184,12 @@ class DelayedProgressBar: UIView {
         switch progressViewType {
         case .oldProgress:
             view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-            let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
-            widthAnchor.isActive = true
-            // todo return
         case .newProgress:
-            // todo set leading to prev view
-            view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-            
-            // todo return
-            let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
-            widthAnchor.isActive = true
+            view.leadingAnchor.constraint(equalTo: instantProgressView.trailingAnchor).isActive = true
         }
         
-        view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
+        widthAnchor.isActive = true
         
         return (view, widthAnchor)
     }

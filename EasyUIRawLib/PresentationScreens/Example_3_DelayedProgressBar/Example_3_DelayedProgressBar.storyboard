@@ -46,31 +46,49 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSr-DQ-15r" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
                                 <rect key="frame" x="31.666666666666657" y="122" width="330" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="8hy-n8-3EI"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vGH-1c-FqN" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
                                 <rect key="frame" x="31.666666666666657" y="341" width="330" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="330" id="39u-8U-95z"/>
                                     <constraint firstAttribute="height" constant="20" id="CP8-Uq-doP"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b15-Gb-VYM" customClass="DelayedProgressBar" customModule="EasyUIRawLib" customModuleProvider="target">
+                                <rect key="frame" x="31.666666666666657" y="486" width="330" height="20"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="330" id="HQC-wS-ZtD"/>
+                                    <constraint firstAttribute="height" constant="20" id="raC-WL-3QA"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Experimental glowing progress below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-Hq-YAW">
+                                <rect key="frame" x="54" y="441" width="284" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vGH-1c-FqN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="282" id="F9Z-Xa-dXU"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Jek-d9-I5U"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="b15-Gb-VYM" secondAttribute="bottom" constant="312" id="Tlg-g0-3hF"/>
                             <constraint firstItem="vGH-1c-FqN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="WXK-jq-Wff"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="63" id="WvA-gu-iA6"/>
+                            <constraint firstItem="b15-Gb-VYM" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="oNg-rh-OeP"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.839695" id="xkW-bl-gSz"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="delayedGlowingProgress" destination="b15-Gb-VYM" id="OhG-l9-sBB"/>
                         <outlet property="delayedProgressBar" destination="LSr-DQ-15r" id="UR5-6P-UNP"/>
                         <outlet property="secondDelayedProgressBar" destination="vGH-1c-FqN" id="ZRW-FQ-al3"/>
                     </connections>
@@ -83,6 +101,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
