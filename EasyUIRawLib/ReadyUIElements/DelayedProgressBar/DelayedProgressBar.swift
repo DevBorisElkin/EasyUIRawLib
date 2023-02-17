@@ -134,9 +134,19 @@ class DelayedProgressBar: UIView {
     
     // MARK: Glowing progress bar setup
     
+    struct GlowingColorSet {
+        var colorSet: ColorSet
+        var outerGlowColor: UIColor
+        var innerGlowColor: UIColor
+    }
+    
+    private static let defaultGlowingColorSet = GlowingColorSet(colorSet: ColorSet(backgroundColor: #colorLiteral(red: 0.1549557745, green: 0.2322508395, blue: 0.328158915, alpha: 1), instantProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1).withAlphaComponent(0.5), delayedProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1)), outerGlowColor: .blue, innerGlowColor: .white)
+    
+    private var selectedGlowingColorSet: GlowingColorSet!
+    
     /// Glowing methods don't relate to common methods because they use a bit different logic
-    public func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0) {
-        selectedColorSet = colorSet
+    public func configureGlowing(colorSet: GlowingColorSet = defaultGlowingColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0) {
+        selectedGlowingColorSet = colorSet
         self.roundedCorners = roundedCorners
         self.animationTime = animationTime
         self.animationDelay = animationDelay
@@ -144,13 +154,13 @@ class DelayedProgressBar: UIView {
         commonGlowingInit()
     }
     
-    public func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
+    public func configureGlowing(colorSet: GlowingColorSet = defaultGlowingColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
         self.configureGlowing(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
         setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
     }
     
     
-    public func configureGlowingAndAnimate(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
+    public func configureGlowingAndAnimate(colorSet: GlowingColorSet = defaultGlowingColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
         self.configureGlowing(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
         
         setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
@@ -167,6 +177,28 @@ class DelayedProgressBar: UIView {
         
         let finalProgressPercents = currentProgress - previousProgress
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
+        
+        // subview for inner shadow
+        let innerShadowView = UIView()
+        let heightPercents: CGFloat = 0.8
+        let widthPercents: CGFloat = 0.9
+        
+        layoutSubviews()
+        
+        delayedProgressView.addSubview(innerShadowView)
+        innerShadowView.frame = CGRect(x: (delayedProgressView.bounds.width * (1 - widthPercents)) / 2, y: (delayedProgressView.bounds.height * (1 - heightPercents)) / 2, width: delayedProgressView.bounds.width * widthPercents, height: delayedProgressView.bounds.height * heightPercents)
+        print("innerShadowView.frame: \(innerShadowView.frame)")
+        innerShadowView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        
+        innerShadowView.layer.cornerRadius = innerShadowView.bounds.height / 2
+        innerShadowView.backgroundColor = selectedGlowingColorSet.innerGlowColor
+//        innerShadowView.layer.shadowColor = selectedGlowingColorSet.innerGlowColor.cgColor
+        innerShadowView.layer.shadowColor = UIColor.red.cgColor
+        innerShadowView.layer.shadowOpacity = 1
+        innerShadowView.layer.shadowRadius = 10
+        
+        // --
     }
     
     /// animate glowing progress
@@ -181,18 +213,22 @@ class DelayedProgressBar: UIView {
     enum ProgressViewType { case oldProgress, newProgress }
     
     private func commonGlowingInit() {
-        layer.masksToBounds = true
-        backgroundColor = selectedColorSet.backgroundColor
+        //layer.masksToBounds = true
+        backgroundColor = selectedGlowingColorSet.colorSet.backgroundColor
         
         let instantProgressViewTuple = createAndConstraintProgressView(progressViewType: .oldProgress)
         instantProgressView = instantProgressViewTuple.view
         instantProgressViewWidthConstraint = instantProgressViewTuple.widthConstraint
-        instantProgressView.backgroundColor = selectedColorSet.instantProgressColor
+        instantProgressView.backgroundColor = selectedGlowingColorSet.colorSet.instantProgressColor
         
         let delayedProgressViewTuple = createAndConstraintProgressView(progressViewType: .newProgress)
         delayedProgressView = delayedProgressViewTuple.view
         delayedProgressViewWidthConstraint = delayedProgressViewTuple.widthConstraint
-        delayedProgressView.backgroundColor = selectedColorSet.delayedProgressColor
+        delayedProgressView.backgroundColor = selectedGlowingColorSet.colorSet.delayedProgressColor
+        
+        delayedProgressView.layer.shadowColor = selectedGlowingColorSet.outerGlowColor.cgColor
+        delayedProgressView.layer.shadowOpacity = 1
+        delayedProgressView.layer.shadowRadius = 10
         
         layoutSubviews()
         if roundedCorners {

@@ -76,7 +76,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.38986229630729552" green="0.36559206829598978" blue="0.56329023919137966" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vGH-1c-FqN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="282" id="F9Z-Xa-dXU"/>
                             <constraint firstItem="LSr-DQ-15r" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Jek-d9-I5U"/>
@@ -99,9 +99,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
