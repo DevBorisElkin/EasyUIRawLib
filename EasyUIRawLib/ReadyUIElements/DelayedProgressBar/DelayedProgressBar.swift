@@ -132,13 +132,55 @@ class DelayedProgressBar: UIView {
         var delayedProgressColor: UIColor
     }
     
-    // MARK: SetUp for glowing new progres
-    // TODO: write logic
-    func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double) {
+    // MARK: Glowing progress bar setup
+    
+    /// Glowing methods don't relate to common methods because they use a bit different logic
+    public func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, animationTime: Double = 0.35, animationDelay: Double = 0) {
         selectedColorSet = colorSet
         self.roundedCorners = roundedCorners
+        self.animationTime = animationTime
+        self.animationDelay = animationDelay
         
-        // initialize values
+        commonGlowingInit()
+    }
+    
+    public func configureGlowing(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
+        self.configureGlowing(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
+        setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
+    }
+    
+    
+    public func configureGlowingAndAnimate(colorSet: ColorSet = defaultColorSet, roundedCorners: Bool = true, previousProgress: Double, currentProgress: Double, animationTime: Double = 0.35, animationDelay: Double = 0) {
+        self.configureGlowing(colorSet: colorSet, roundedCorners: roundedCorners, animationTime: animationTime, animationDelay: animationDelay)
+        
+        setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
+        animateGlowingProgress()
+    }
+    
+    /// simlpy set glowing progress
+    public func setGlowingProgress(previousProgress: Double, currentProgress: Double) {
+        checkProgresses([previousProgress, currentProgress])
+        recordedPriveousProgress = previousProgress
+        recordedCurrentProgress = currentProgress
+        
+        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        
+        let finalProgressPercents = currentProgress - previousProgress
+        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
+    }
+    
+    /// animate glowing progress
+    public func animateGlowingProgress() {
+        layoutSubviews()
+        UIView.animate(withDuration: animationTime, delay: animationDelay) {
+            self.delayedProgressViewWidthConstraint.constant = 0
+            self.layoutIfNeeded()
+        }
+    }
+    
+    enum ProgressViewType { case oldProgress, newProgress }
+    
+    private func commonGlowingInit() {
         layer.masksToBounds = true
         backgroundColor = selectedColorSet.backgroundColor
         
@@ -160,25 +202,7 @@ class DelayedProgressBar: UIView {
                 self.delayedProgressView.layer.cornerRadius = self.delayedProgressView.bounds.height / 2
             }
         }
-        
-        setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
     }
-    
-    // make adjustment for rounded corners if enabled
-    func setGlowingProgress(previousProgress: Double, currentProgress: Double) {
-        checkProgresses([previousProgress, currentProgress])
-        recordedPriveousProgress = previousProgress
-        recordedCurrentProgress = currentProgress
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
-        
-        let roundedCornersWidthAdjustment = roundedCorners ? bounds.height / bounds.width : 0
-        let simpleProgressPercents = currentProgress - previousProgress
-        let finalProgressPercents = simpleProgressPercents + roundedCornersWidthAdjustment
-        
-        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
-    }
-    
-    enum ProgressViewType { case oldProgress, newProgress }
     
     // make adjustment for rounded corners if enabled
     private func createAndConstraintProgressView(progressViewType: ProgressViewType) -> (view: UIView, widthConstraint: NSLayoutConstraint) {
@@ -192,8 +216,7 @@ class DelayedProgressBar: UIView {
         case .oldProgress:
             view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         case .newProgress:
-            let roundedCornersAdjustment = roundedCorners ? -bounds.height : 0
-            view.leadingAnchor.constraint(equalTo: instantProgressView.trailingAnchor, constant: roundedCornersAdjustment).isActive = true
+            view.trailingAnchor.constraint(equalTo: instantProgressView.trailingAnchor).isActive = true
         }
         
         let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
