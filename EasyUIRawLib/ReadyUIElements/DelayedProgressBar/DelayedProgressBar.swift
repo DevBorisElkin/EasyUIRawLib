@@ -164,16 +164,23 @@ class DelayedProgressBar: UIView {
         setGlowingProgress(previousProgress: previousProgress, currentProgress: currentProgress)
     }
     
+    // make adjustment for rounded corners if enabled
     func setGlowingProgress(previousProgress: Double, currentProgress: Double) {
         checkProgresses([previousProgress, currentProgress])
         recordedPriveousProgress = previousProgress
         recordedCurrentProgress = currentProgress
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
-        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress - previousProgress)
+        
+        let roundedCornersWidthAdjustment = roundedCorners ? bounds.height / bounds.width : 0
+        let simpleProgressPercents = currentProgress - previousProgress
+        let finalProgressPercents = simpleProgressPercents + roundedCornersWidthAdjustment
+        
+        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
     }
     
     enum ProgressViewType { case oldProgress, newProgress }
     
+    // make adjustment for rounded corners if enabled
     private func createAndConstraintProgressView(progressViewType: ProgressViewType) -> (view: UIView, widthConstraint: NSLayoutConstraint) {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -185,7 +192,8 @@ class DelayedProgressBar: UIView {
         case .oldProgress:
             view.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         case .newProgress:
-            view.leadingAnchor.constraint(equalTo: instantProgressView.trailingAnchor).isActive = true
+            let roundedCornersAdjustment = roundedCorners ? -bounds.height : 0
+            view.leadingAnchor.constraint(equalTo: instantProgressView.trailingAnchor, constant: roundedCornersAdjustment).isActive = true
         }
         
         let widthAnchor = view.widthAnchor.constraint(equalToConstant: 0)
