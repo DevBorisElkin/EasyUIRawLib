@@ -137,10 +137,9 @@ class DelayedProgressBar: UIView {
     struct GlowingColorSet {
         var colorSet: ColorSet
         var outerGlowColor: UIColor
-        var innerGlowColor: UIColor
     }
     
-    private static let defaultGlowingColorSet = GlowingColorSet(colorSet: ColorSet(backgroundColor: #colorLiteral(red: 0.1549557745, green: 0.2322508395, blue: 0.328158915, alpha: 1), instantProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1).withAlphaComponent(0.5), delayedProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1)), outerGlowColor: .blue, innerGlowColor: .white)
+    private static let defaultGlowingColorSet = GlowingColorSet(colorSet: ColorSet(backgroundColor: #colorLiteral(red: 0.1549557745, green: 0.2322508395, blue: 0.328158915, alpha: 1), instantProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1).withAlphaComponent(0.5), delayedProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1)), outerGlowColor: .blue)
     
     private var selectedGlowingColorSet: GlowingColorSet!
     
@@ -178,38 +177,8 @@ class DelayedProgressBar: UIView {
         
         let finalProgressPercents = currentProgress - previousProgress
         delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
-        
-        // inner shadow
-        
-        let innerShadowView = UIView()
-        self.innerShadowView = innerShadowView
-        
-        let heightPercents: CGFloat = 0.5
-        let widthPercents: CGFloat = 0.8
-        
-        innerShadowView.frame = CGRect(x: (delayedProgressView.bounds.width * (1 - widthPercents)) / 2, y: (delayedProgressView.bounds.height * (1 - heightPercents)) / 2, width: delayedProgressView.bounds.width * widthPercents, height: delayedProgressView.bounds.height * heightPercents)
-        
-        delayedProgressView.addSubview(innerShadowView)
-        innerShadowView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleHeight, .flexibleWidth]
-        innerShadowView.backgroundColor = selectedGlowingColorSet.innerGlowColor.withAlphaComponent(0.5)
-        innerShadowView.layer.cornerRadius = innerShadowView.bounds.height / 2
-        
-        let path = UIBezierPath(roundedRect: innerShadowView.bounds, cornerRadius: innerShadowView.bounds.height / 2)
-        
-        //innerShadowView.layer.opacity = 0.5
-        // Set the shadow properties
-        innerShadowView.layer.shadowPath = path.cgPath
-        innerShadowView.layer.shadowColor = selectedGlowingColorSet.innerGlowColor.cgColor
-        innerShadowView.layer.shadowOpacity = 1
-        //        innerShadowView.layer.shadowRadius = (delayedProgressView.bounds.height - innerShadowView.bounds.height) / 2
-        innerShadowView.layer.shadowRadius = 20
-        innerShadowView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        
-        // Clip the view to its rounded corners
-        //        innerShadowView.clipsToBounds = true
     }
     
-    var innerShadowView: UIView?
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -217,15 +186,7 @@ class DelayedProgressBar: UIView {
             let path = UIBezierPath(roundedRect: delayedProgressView.bounds, cornerRadius: delayedProgressView.bounds.height / 2)
             delayedProgressView.layer.shadowPath = path.cgPath
         }
-        
-        if let innerShadowView = innerShadowView {
-            let path = UIBezierPath(roundedRect: innerShadowView.bounds, cornerRadius: innerShadowView.bounds.height / 2)
-            innerShadowView.layer.shadowPath = path.cgPath
-        }
-        
     }
-    
-    
     
     /// animate glowing progress
     public func animateGlowingProgress() {
