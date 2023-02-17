@@ -26,6 +26,7 @@ class Example_3_DelayedProgressBar: UIViewController {
         secondDelayedProgressBar.configureAndAnimate(colorSet: colorSet, roundedCorners: true, animationTime: 0.45, animationDelay: 2, previousProgress: 0.35, currentProgress: 0.7)
         
         delayedGlowingProgress.configureGlowingAndAnimate(roundedCorners: true, previousProgress: 0.25, currentProgress: 0.5, animationTime: 5, animationDelay: 1.4)
+//        delayedGlowingProgress.configureGlowingAndAnimate(roundedCorners: true, previousProgress: 0.25, currentProgress: 0.5, animationTime: 0.5, animationDelay: 1.4)
     }
     
     
