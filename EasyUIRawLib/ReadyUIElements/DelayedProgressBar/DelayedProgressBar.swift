@@ -1,10 +1,3 @@
-//
-//  DelayedProgressBar.swift
-//  EasyUIRawLib
-//
-//  Created by test on 20.12.2022.
-//
-
 import UIKit
 
 // it's horizontal only
@@ -22,6 +15,13 @@ class DelayedProgressBar: UIView {
     
     private var recordedPriveousProgress: Double = 0
     private var recordedCurrentProgress: Double = 0
+    
+    // use to set explicit width or height if size is unknown
+    var progressBarWidthOverride: CGFloat?
+    var progressBarHeightOverride: CGFloat?
+    
+    var width: CGFloat { progressBarWidthOverride ?? bounds.width }
+    var height: CGFloat { progressBarHeightOverride ?? bounds.height }
     
     private static let defaultColorSet = ColorSet(backgroundColor: #colorLiteral(red: 0.1549557745, green: 0.2322508395, blue: 0.328158915, alpha: 1), instantProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1).withAlphaComponent(0.5), delayedProgressColor: #colorLiteral(red: 0.4235294118, green: 0.6549019608, blue: 1, alpha: 1))
     
@@ -52,6 +52,10 @@ class DelayedProgressBar: UIView {
         layer.masksToBounds = true
         backgroundColor = selectedColorSet.backgroundColor
         
+        // cleanupFromOldViews
+        instantProgressView?.removeFromSuperview()
+        delayedProgressView?.removeFromSuperview()
+        
         let instantProgressViewTuple = createAndConstraintProgressView()
         instantProgressView = instantProgressViewTuple.view
         instantProgressViewWidthConstraint = instantProgressViewTuple.widthConstraint
@@ -65,19 +69,20 @@ class DelayedProgressBar: UIView {
         layoutSubviews()
         if roundedCorners {
             DispatchQueue.main.async {
-                self.layer.cornerRadius = self.bounds.height / 2
-                self.instantProgressView.layer.cornerRadius = self.instantProgressView.bounds.height / 2
-                self.delayedProgressView.layer.cornerRadius = self.delayedProgressView.bounds.height / 2
+                let cornerRadius = self.height / 2
+                self.layer.cornerRadius = cornerRadius
+                self.instantProgressView.layer.cornerRadius = cornerRadius
+                self.delayedProgressView.layer.cornerRadius = cornerRadius
             }
         }
     }
     
     func setProgressAndAnimate(previousProgress: Double, currentProgress: Double) {
         checkProgresses([previousProgress, currentProgress])
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
-        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        delayedProgressViewWidthConstraint.constant = width * CGFloat(previousProgress)
+        instantProgressViewWidthConstraint.constant = width * CGFloat(currentProgress)
         layoutSubviews()
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        delayedProgressViewWidthConstraint.constant = width * CGFloat(currentProgress)
         UIView.animate(withDuration: animationTime, delay: animationDelay) {
             self.layoutSubviews()
         }
@@ -87,13 +92,13 @@ class DelayedProgressBar: UIView {
         checkProgresses([previousProgress, currentProgress])
         recordedPriveousProgress = previousProgress
         recordedCurrentProgress = currentProgress
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(previousProgress)
-        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        delayedProgressViewWidthConstraint.constant = width * CGFloat(previousProgress)
+        instantProgressViewWidthConstraint.constant = width * CGFloat(currentProgress)
     }
     
     func animate() {
         layoutSubviews()
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(recordedCurrentProgress)
+        delayedProgressViewWidthConstraint.constant = width * CGFloat(recordedCurrentProgress)
         UIView.animate(withDuration: animationTime) {
             self.layoutSubviews()
         }
@@ -173,17 +178,17 @@ class DelayedProgressBar: UIView {
         recordedPriveousProgress = previousProgress
         recordedCurrentProgress = currentProgress
         
-        instantProgressViewWidthConstraint.constant = bounds.width * CGFloat(currentProgress)
+        instantProgressViewWidthConstraint.constant = width * CGFloat(currentProgress)
         
         let finalProgressPercents = currentProgress - previousProgress
-        delayedProgressViewWidthConstraint.constant = bounds.width * CGFloat(finalProgressPercents)
+        delayedProgressViewWidthConstraint.constant = width * CGFloat(finalProgressPercents)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         if selectedGlowingColorSet != nil {
-            let path = UIBezierPath(roundedRect: delayedProgressView.bounds, cornerRadius: delayedProgressView.bounds.height / 2)
+            let path = UIBezierPath(roundedRect: delayedProgressView.bounds, cornerRadius: height / 2)
             delayedProgressView.layer.shadowPath = path.cgPath
         }
     }
@@ -203,6 +208,10 @@ class DelayedProgressBar: UIView {
         //layer.masksToBounds = true
         backgroundColor = selectedGlowingColorSet.colorSet.backgroundColor
         
+        // cleanupFromOldViews
+        instantProgressView?.removeFromSuperview()
+        delayedProgressView?.removeFromSuperview()
+        
         let instantProgressViewTuple = createAndConstraintProgressView(progressViewType: .oldProgress)
         instantProgressView = instantProgressViewTuple.view
         instantProgressViewWidthConstraint = instantProgressViewTuple.widthConstraint
@@ -221,9 +230,10 @@ class DelayedProgressBar: UIView {
         layoutSubviews()
         if roundedCorners {
             DispatchQueue.main.async {
-                self.layer.cornerRadius = self.bounds.height / 2
-                self.instantProgressView.layer.cornerRadius = self.instantProgressView.bounds.height / 2
-                self.delayedProgressView.layer.cornerRadius = self.delayedProgressView.bounds.height / 2
+                let cornerRadius = self.height / 2
+                self.layer.cornerRadius = cornerRadius
+                self.instantProgressView.layer.cornerRadius = cornerRadius
+                self.delayedProgressView.layer.cornerRadius = cornerRadius
             }
         }
     }
